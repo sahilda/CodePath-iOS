@@ -16,13 +16,15 @@ The following **required** functionality is complete:
 The following **optional** features are implemented:
 * [ ] UI animations
 * [x] Remembering the bill amount across app restarts (if <10mins)
-* [ ] Using locale-specific currency and currency thousands separators.
+* [x] Using locale-specific currency and currency thousands separators.
 * [x] Making sure the keyboard is always visible and the bill amount is always the first responder. This way the user doesn't have to tap anywhere to use this app. Just launch the app and start typing.
 
 The following **additional** features are implemented:
 
-- [ ] Link Buttons to extend functionality via Venmo and Foursqare/Swarm.
+- [x] Link Buttons to extend functionality via Venmo and Foursqare/Swarm.
+- [x] Custom Tip Percentage
 - [ ] Light / Dark Theme Selector
+- [ ] "Round Up" button
 
 ## Video Walkthrough 
 
@@ -34,9 +36,12 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
-
-App Icon was created using [https://icons8.com/web-app/for/ios7/money].
+Some challenges building this app were:
+* Not sure how default values are initialized in NSLocale, so had to account for nils
+* Handling blank user input for the custom tip was frustrating
+* Deeplinking to another app is more complicated than say a webpage - as such defaulted to (venmo.com) and (swarmapp.com) instead of opening the user's app if installed.
+* I was trying to use a picker selector for the custom tip (giving a range of 10% - 30%), but proved more difficult to implement, so instead used a field.
+* App icon was created with [icons8](https://icons8.com/web-app/for/ios7/money).
 
 ## License
 

@@ -15,23 +15,30 @@ class ViewController: UIViewController {
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var tipControl: UISegmentedControl!
     @IBOutlet weak var venmoButton: UIButton!
+    let currencyFormatter = NSNumberFormatter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        // Focus on billField upon opening
-        billField.becomeFirstResponder()
     }
     
     override func viewWillAppear(animated: Bool) {
+        
+        // load data
         let defaults = NSUserDefaults.standardUserDefaults()
         let tipSelectedSegmentIndex = defaults.integerForKey("tipSelectedSegmentIndex")
         tipControl.selectedSegmentIndex = tipSelectedSegmentIndex
+        billField.text! = defaults.objectForKey("billField") == nil ? "0" : defaults.objectForKey("billField") as! String
         
-        billField.text = defaults.objectForKey("billField") == nil ? "$" : defaults.objectForKey("billField") as! String
+        // set custom tip label
+        let customTipLabel = String(defaults.integerForKey("customTip")) + "%"
+        tipControl.setTitle(customTipLabel, forSegmentAtIndex: 3)
         
+        // calculate tip
         self.calculateTip("")
+        
+        // Focus on billField upon opening
+        billField.becomeFirstResponder()
     }
     
     override func didReceiveMemoryWarning() {
@@ -43,16 +50,28 @@ class ViewController: UIViewController {
         view.endEditing(true)
     }
     
+    func changeNumberToCurrency(number : Double) -> String {
+        currencyFormatter.numberStyle = NSNumberFormatterStyle.CurrencyStyle
+        currencyFormatter.currencyCode = NSLocale.currentLocale().displayNameForKey(NSLocaleCurrencySymbol, value: NSLocaleCurrencyCode)
+        
+        return currencyFormatter.stringFromNumber(number)!
+    }
+    
+    func getCustomTipPercentage() -> Double {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        return Double(defaults.integerForKey("customTip")) / 100
+    }
+    
     @IBAction func calculateTip(sender: AnyObject) {
-        let tipPercentages = [0.15, 0.2, 0.25]
+        let tipPercentages = [0.15, 0.2, 0.25, getCustomTipPercentage()]
         
-        let userInput = String(billField.text!) ?? ""
-        let bill = Double(userInput.stringByReplacingOccurrencesOfString("$", withString: "")) ?? 0
-        let tip = bill * tipPercentages[tipControl.selectedSegmentIndex]
-        let total = bill + tip
+        let userInput = Double(billField.text!) == nil ? 0 : Double(billField.text!)
         
-        tipLabel.text = String(format: "$%.2f", tip)
-        totalLabel.text = String(format: "$%.2f", total)
+        let tip = userInput! * tipPercentages[tipControl.selectedSegmentIndex]
+        let total = userInput! + tip
+        
+        tipLabel.text = changeNumberToCurrency(tip)
+        totalLabel.text = changeNumberToCurrency(total)
     }
 
     @IBAction func saveTipSelectorIndex(sender: AnyObject) {
