@@ -4,7 +4,7 @@
 
 Submitted by: **Sahil Agarwal**
 
-Time spent: **X** hours spent in total
+Time spent: **12** hours spent in total
 
 ## User Stories
 
@@ -14,7 +14,7 @@ The following **required** functionality is complete:
 * [x] Settings page to change the default tip percentage.
 
 The following **optional** features are implemented:
-* [ ] UI animations
+* [x] UI animations
 * [x] Remembering the bill amount across app restarts (if <10mins)
 * [x] Using locale-specific currency and currency thousands separators.
 * [x] Making sure the keyboard is always visible and the bill amount is always the first responder. This way the user doesn't have to tap anywhere to use this app. Just launch the app and start typing.
@@ -23,8 +23,8 @@ The following **additional** features are implemented:
 
 - [x] Link Buttons to extend functionality via Venmo and Foursqare/Swarm.
 - [x] Custom Tip Percentage
-- [ ] Light / Dark Theme Selector
-- [ ] "Round Up" button
+- [x] Light / Dark Theme Selector
+- [x] "Round Up" button
 
 ## Video Walkthrough 
 
@@ -41,6 +41,7 @@ Some challenges building this app were:
 * Handling blank user input for the custom tip was frustrating
 * Deeplinking to another app is more complicated than say a webpage - as such defaulted to (venmo.com) and (swarmapp.com) instead of opening the user's app if installed.
 * I was trying to use a picker selector for the custom tip (giving a range of 10% - 30%), but proved more difficult to implement, so instead used a field.
+* Color management for each element is a pain.
 * App icon was created with [icons8](https://icons8.com/web-app/for/ios7/money).
 
 ## License

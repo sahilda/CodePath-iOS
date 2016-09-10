@@ -47,6 +47,7 @@ class SettingsViewController: UIViewController {
             modeText.textColor = UIColor(red: 29/255, green: 162/255, blue: 19/255, alpha: 1.0)
             customTipText.textColor = UIColor(red: 29/255, green: 162/255, blue: 19/255, alpha: 1.0)
             percentSignText.textColor = UIColor(red: 29/255, green: 162/255, blue: 19/255, alpha: 1.0)
+       
         } else {
             self.view.backgroundColor = UIColor(red: 29/255, green: 162/255, blue: 19/255, alpha: 1.0)
             tipText.textColor = UIColor.whiteColor()
@@ -86,15 +87,4 @@ class SettingsViewController: UIViewController {
         view.endEditing(true)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    }
-    
-    
-
 }
