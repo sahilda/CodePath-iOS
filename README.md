@@ -30,7 +30,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://i.imgur.com/wwDr3hu.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
@@ -43,6 +43,7 @@ Some challenges building this app were:
 * I was trying to use a picker selector for the custom tip (giving a range of 10% - 30%), but proved more difficult to implement, so instead used a field.
 * Color management for each element is a pain.
 * App icon was created with [icons8](https://icons8.com/web-app/for/ios7/money).
+* Demo GIF optimized using [ezgif](http://ezgif.com/).
 
 ## License
 
