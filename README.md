@@ -4,7 +4,7 @@
 
 Submitted by: **Sahil Agarwal**
 
-Time spent: **12** hours spent in total
+Time spent: **15** hours spent in total
 
 ## User Stories
 
