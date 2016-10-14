@@ -100,10 +100,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let url = URL(string: urlString)
         cell.myImage.setImageWith(url!)
         
-        if indexPath.row == (posts.count - 1) {
-            print("here")
-            loadTumblr()
-        }
+//        if indexPath.row == (posts.count - 1) {
+//            print("here")
+//            loadTumblr()
+//        }
         return cell
     }
 
