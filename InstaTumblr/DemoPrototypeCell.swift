@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import AFNetworking
 
 class DemoPrototypeCell: UITableViewCell {
+    @IBOutlet weak var myImage: UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
