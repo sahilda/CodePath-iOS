@@ -1,0 +1,6 @@
+framework module Pods_whats_playing {
+  umbrella header "Pods-whats_playing-umbrella.h"
+
+  export *
+  module * { export * }
+}
