@@ -30,7 +30,6 @@ class DetailsViewController: UIViewController {
         overviewLabel.sizeToFit()
         
         if let posterPath = movie["poster_path"] as? String {
-            
             let lowResPosterBaseUrl = "http://image.tmdb.org/t/p/w150"
             let lowResPosterUrl = URL(string: lowResPosterBaseUrl + posterPath)
             let lowResImageRequest = URLRequest(url: lowResPosterUrl!)
@@ -58,12 +57,12 @@ class DetailsViewController: UIViewController {
                                     self.posterImageView.image = highResImage
                                 },
                                 failure: { (request, response, error) -> Void in
-                                    self.posterImageView.image = nil
+                                    self.posterImageView.image = UIImage(named: "no-image")
                             })
                     })
                 },
                 failure: { (request, response, error) -> Void in
-                    self.posterImageView.image = nil
+                    self.posterImageView.image = UIImage(named: "no-image")
             })
         } else {
             self.posterImageView.image = UIImage(named: "no-image")

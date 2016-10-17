@@ -2,7 +2,7 @@
 
 What's Playing is a movies app using the [The Movie Database API](http://docs.themoviedb.apiary.io/#).
 
-Time spent: **X** hours spent in total
+Time spent: **9** hours spent in total
 
 ## User Stories
 
@@ -17,16 +17,12 @@ The following **required** functionality is completed:
 The following **optional** features are implemented:
 
 - [x] Add a tab bar for **Now Playing** and **Top Rated** movies.
-- [ ] Implement segmented control to switch between list view and grid view.
+- [x] Implement segmented control to switch between list view and grid view.
 - [x] Add a search bar.
 - [x] All images fade in.
 - [x] For the large poster, load the low-res image first, switch to high-res when complete.
 - [x] Customize the highlight and selection effect of the cell.
 - [x] Customize the navigation bar.
-
-The following **additional** features are implemented:
-
-- [ ] List anything else that you can get done to improve the app functionality!
 
 ## Video Walkthrough
 
@@ -38,10 +34,10 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-* Initially ran into trouble when adding the tab bar
-
-* Tab Bar Icons: film and film start icons by Hea Poh Lin from the Noun Project
-* "No Image Available" found here [http://polyureashop.studio.crasman.fi/pub/web/img/no-image.jpg]
+* Initially ran into trouble when adding the tab bar with this exception "Push segues can only be used when the source controller is managed by an instance of UINavigationController". After spending time researching and finding no solution, I decided to revert back to a pre-tab state and was able to succeed this time. Not sure what the error was (though suspicion is a wrong function or variable was called).
+* Tab Bar Icons: film and film start icons by Hea Poh Lin from the Noun Project.
+* "No Image Available" found here [http://polyureashop.studio.crasman.fi/pub/web/img/no-image.jpg].
+* App icon found here: [https://www.iconfinder.com/icons/172074/movies_play_icon#size=96].
 
 ## License
 
