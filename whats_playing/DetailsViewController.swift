@@ -12,6 +12,7 @@ class DetailsViewController: UIViewController {
 
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var overviewLabel: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var infoView: UIView!
@@ -24,6 +25,7 @@ class DetailsViewController: UIViewController {
         scrollView.contentSize = CGSize(width: scrollView.frame.size.width, height: infoView.frame.origin.y + infoView.frame.size.height)
         
         titleLabel.text = movie["title"] as? String
+        ratingLabel.text = "User Rating: \(movie["vote_average"] as! Float)"
         overviewLabel.text = movie["overview"] as? String
         overviewLabel.sizeToFit()
         

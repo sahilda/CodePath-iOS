@@ -44,7 +44,6 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-
         if searchText.isEmpty {
             filteredMovies = movies
         } else {
