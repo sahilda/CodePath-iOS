@@ -28,7 +28,7 @@ The following **optional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/ZibLssK.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://i.imgur.com/Blsc8wR.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
@@ -36,8 +36,8 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 * Initially ran into trouble when adding the tab bar with this exception "Push segues can only be used when the source controller is managed by an instance of UINavigationController". After spending time researching and finding no solution, I decided to revert back to a pre-tab state and was able to succeed this time. Not sure what the error was (though suspicion is a wrong function or variable was called).
 * Tab Bar Icons: film and film start icons by Hea Poh Lin from the Noun Project.
-* "No Image Available" found here [http://polyureashop.studio.crasman.fi/pub/web/img/no-image.jpg].
-* App icon found here: [https://www.iconfinder.com/icons/172074/movies_play_icon#size=96].
+* "No Image Available" found [here](http://polyureashop.studio.crasman.fi/pub/web/img/no-image.jpg).
+* App icon found created using [IconFinder](https://www.iconfinder.com/icons/172074/movies_play_icon#size=96).
 
 ## License
 
