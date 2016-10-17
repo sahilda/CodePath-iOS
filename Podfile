@@ -7,5 +7,6 @@ target 'whats_playing' do
 
   # Pods for whats_playing
   pod 'AFNetworking'
+  pod 'MBProgressHUD'
 
 end
