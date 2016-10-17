@@ -22,9 +22,11 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.backgroundColor = UIColor(red: 178/255, green: 61/255, blue: 47/255, alpha: 1)
+        tableView.backgroundView?.backgroundColor = UIColor(red: 178/255, green: 61/255, blue: 47/255, alpha: 1)
         
         let refreshControl = UIRefreshControl()
-        refreshControl.backgroundColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
+        refreshControl.backgroundColor = UIColor(red: 178/255, green: 61/255, blue: 47/255, alpha: 1)
         refreshControl.addTarget(self, action: #selector(refreshControlAction(refreshControl:)), for: UIControlEvents.valueChanged)
         tableView.insertSubview(refreshControl, at: 0)
         
