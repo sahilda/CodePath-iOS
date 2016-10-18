@@ -2,6 +2,10 @@
 
 An instagram view of the Humans of New York Tumblr feed.
 
+# Notes
+
+* App logo was found on the [Humans of New York blog](http://www.majamade.com/hony/).
+
 ## License
 
     Copyright 2016 Joshua Escribano and Sahil Agarwal
