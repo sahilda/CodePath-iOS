@@ -116,9 +116,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let vc = segue.destination as! PhotoDetailsViewController
         var indexPath = tableView.indexPath(for: sender as! UITableViewCell)
-        let photosArrayDict = posts[(indexPath?.row)!].value(forKeyPath: "photos") as! [NSDictionary]
+        let photosArrayDict = posts[(indexPath?.section)!].value(forKeyPath: "photos") as! [NSDictionary]
+        
         let urlString = (photosArrayDict[0].value(forKey: "original_size") as! NSDictionary).value(forKey: "url") as! String
         vc.photoUrl = urlString
+        vc.caption = posts[(indexPath?.section)!].value(forKeyPath: "summary") as! String
+        vc.postUrl = posts[(indexPath?.section)!].value(forKeyPath: "post_url") as! String
     }
 }
 
