@@ -8,10 +8,11 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     var posts: [NSDictionary] = [NSDictionary]()
+    var isMoreDataLoading = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +26,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.insertSubview(refreshControl, at: 0)
         
         loadTumblr()
+        self.tableView.reloadData()
     }
 
     func loadTumblr(_ refreshControl: UIRefreshControl? = nil) {
@@ -44,15 +46,63 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     if refreshControl != nil {
                         refreshControl?.endRefreshing()
                     }
-                    self.tableView.reloadData()
                 }
             }
         });
         task.resume()
     }
     
+    func loadMoreData() {
+        // TODO fix this request so that it obtains the next set of results
+        let apiKey = "Q6vHoaVm5L1u2ZAW1fqv3Jw48gFzYVg9P0vH0VHl3GVy6quoGV"
+        let url = URL(string:"https://api.tumblr.com/v2/blog/humansofnewyork.tumblr.com/posts/photo?api_key=\(apiKey)")
+        let myRequest = URLRequest(url: url!)
+        
+        // Configure session so that completion handler is executed on main UI thread
+        let session = URLSession(
+            configuration: URLSessionConfiguration.default,
+            delegate:nil,
+            delegateQueue:OperationQueue.main
+        )
+        
+        let task : URLSessionDataTask = session.dataTask(with: myRequest, completionHandler: { (dataOrNil, response, error) in
+            // Update flag
+            self.isMoreDataLoading = false
+            
+            // ... Use the new data to update the data source ...
+            if let data = dataOrNil {
+                if let responseDictionary = try! JSONSerialization.jsonObject(with: data, options:[]) as? NSDictionary {
+                    let new_posts = responseDictionary.value(forKeyPath: "response.posts") as! [NSDictionary]
+                    self.posts = self.posts + new_posts
+                }
+            }
+            
+            // Reload the tableView now that there is new data
+            self.tableView.reloadData()
+        });
+        task.resume()
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if (!isMoreDataLoading) {
+            // Calculate the position of one screen length before the bottom of the results
+            let scrollViewContentHeight = tableView.contentSize.height
+            let scrollOffsetThreshold = scrollViewContentHeight - tableView.bounds.size.height
+            
+            // When the user has scrolled past the threshold, start requesting
+            if(scrollView.contentOffset.y > scrollOffsetThreshold && tableView.isDragging) {
+                
+                isMoreDataLoading = true
+                
+                // Code to load more results
+                loadMoreData()
+            }
+        }
+    }
+    
     func refreshControlAction(_ refreshControl: UIRefreshControl) {
         loadTumblr(refreshControl)
+        self.tableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

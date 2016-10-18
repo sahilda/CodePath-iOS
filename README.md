@@ -2,7 +2,15 @@
 
 An instagram view of the Humans of New York Tumblr feed.
 
-# Notes
+## Video Walkthrough
+
+Here's a walkthrough of implemented user stories:
+
+<img src='http://i.imgur.com/K599tr7.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+GIF created with [LiceCap](http://www.cockos.com/licecap/).
+
+## Notes
 
 * App logo was found on the [Humans of New York blog](http://www.majamade.com/hony/).
 
