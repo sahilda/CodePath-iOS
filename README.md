@@ -26,9 +26,9 @@ The following **optional** features are implemented:
 
 ## Video Walkthrough
 
-Here's a walkthrough of implemented user stories:
-
+Here's a walkthrough of implemented user stories - a feature walkthrough and when there's a network error:
 <img src='http://i.imgur.com/Blsc8wR.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://i.imgur.com/2mwXDbG.gif' title='Network Error Walkthrough' width='' alt='Network Error Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
