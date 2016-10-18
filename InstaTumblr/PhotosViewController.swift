@@ -3,7 +3,7 @@
 //  InstaTumblr
 //
 //  Created by Joshua Escribano on 10/13/16.
-//  Copyright © 2016 JoshuaSahil. All rights reserved.
+//  Copyright © 2016 Joshua and Sahil. All rights reserved.
 //
 
 import UIKit
@@ -15,16 +15,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
         tableView.rowHeight = 320
         tableView.delegate = self
         tableView.dataSource = self
-        loadTumblr()
         
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: .valueChanged)
         tableView.insertSubview(refreshControl, at: 0)
+        
+        loadTumblr()
     }
 
     func loadTumblr(_ refreshControl: UIRefreshControl? = nil) {
@@ -41,10 +41,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 if let responseDictionary = try! JSONSerialization.jsonObject(with: data, options:[]) as? NSDictionary {
                     NSLog("response: \(responseDictionary)")
                     self.posts = responseDictionary.value(forKeyPath: "response.posts") as! [NSDictionary]
-                    self.tableView.reloadData()
                     if refreshControl != nil {
                         refreshControl?.endRefreshing()
                     }
+                    self.tableView.reloadData()
                 }
             }
         });
@@ -55,13 +55,22 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         loadTumblr(refreshControl)
     }
     
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "demoPrototypeCell", for: indexPath) as! DemoPrototypeCell
+        let photosArrayDict = posts[indexPath.section].value(forKeyPath: "photos") as! [NSDictionary]
+        let urlString = (photosArrayDict[0].value(forKey: "original_size") as! NSDictionary).value(forKey: "url") as! String
+        let url = URL(string: urlString)
+        cell.myImage.setImageWith(url!)
+        
+        return cell
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return posts.count
+        return 1
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return posts.count
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -81,8 +90,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // Add a UILabel for the date here
         // Use the section number to get the right URL
         let label = UILabel(frame: CGRect(x: 50, y: 0, width: 320, height: 50))
-        label.text = "Humans of New York"
         
+        let date = posts[section].value(forKeyPath: "date") as? String
+        label.text = "\(date!.components(separatedBy: " ")[0])"
+    
         headerView.addSubview(label)
         
         return headerView
@@ -93,18 +104,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "demoPrototypeCell", for: indexPath) as! DemoPrototypeCell
-        let photosArrayDict = posts[indexPath.row].value(forKeyPath: "photos") as! [NSDictionary]
-        let urlString = (photosArrayDict[0].value(forKey: "original_size") as! NSDictionary).value(forKey: "url") as! String
-        let url = URL(string: urlString)
-        cell.myImage.setImageWith(url!)
-        
-//        if indexPath.row == (posts.count - 1) {
-//            print("here")
-//            loadTumblr()
-//        }
-        return cell
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -113,18 +114,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        var vc = segue.destination as! PhotoDetailsViewController
+        let vc = segue.destination as! PhotoDetailsViewController
         var indexPath = tableView.indexPath(for: sender as! UITableViewCell)
         let photosArrayDict = posts[(indexPath?.row)!].value(forKeyPath: "photos") as! [NSDictionary]
         let urlString = (photosArrayDict[0].value(forKey: "original_size") as! NSDictionary).value(forKey: "url") as! String
-        let url = URL(string: urlString)
         vc.photoUrl = urlString
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-
-
 }
 
