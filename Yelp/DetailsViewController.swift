@@ -7,38 +7,96 @@
 //
 
 import UIKit
+import MapKit
+import CoreLocation
 
-class DetailsViewController: UIViewController {
+class DetailsViewController: UIViewController, CLLocationManagerDelegate {
 
     @IBOutlet weak var backBarButton: UIBarButtonItem!
+    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var categoriesLabel: UILabel!
+    @IBOutlet weak var ratingsImageView: UIImageView!
+    @IBOutlet weak var reviewsLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var distanceLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var thumbImageView: UIImageView!
+    @IBOutlet weak var mapView: MKMapView!
+    
     var business: Business!
+    var locationManager : CLLocationManager!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.barTintColor = YelpRedColor.getYelpRedColor()
         
-        print(business)
+        // load data
+        thumbImageView.layer.cornerRadius = 3
+        thumbImageView.clipsToBounds = true
+        if business.imageURL != nil {
+            thumbImageView.setImageWith(business.imageURL!)
+        } else {
+            thumbImageView.image = UIImage(named: "blank")
+        }
+        nameLabel.text = business.name!
+        distanceLabel.text = business.distance!
+        categoriesLabel.text = business.categories!
+        addressLabel.text = business.address!
+        reviewsLabel.text = "\(business.reviewCount!) Reviews"
+        ratingsImageView.setImageWith(business.ratingImageURL!)
+        
+        // setup Map
+        let centerLocation = CLLocation(latitude: 37.7833, longitude: -122.4167)
+        goToLocation(location: centerLocation)
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        locationManager.distanceFilter = 200
+        locationManager.requestWhenInUseAuthorization()
+        
+        addAnnotationAtAddress(address: addressLabel.text!)
+        
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     
     @IBAction func backButtonPressed(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func goToLocation(location: CLLocation) {
+        let span = MKCoordinateSpanMake(0.025, 0.025)
+        let region = MKCoordinateRegionMake(location.coordinate, span)
+        mapView.setRegion(region, animated: false)
     }
-    */
-
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == CLAuthorizationStatus.authorizedWhenInUse {
+            locationManager.startUpdatingLocation()
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.first {
+            let span = MKCoordinateSpanMake(0.025, 0.025)
+            let region = MKCoordinateRegionMake(location.coordinate, span)
+            mapView.setRegion(region, animated: false)
+        }
+    }
+    
+    func addAnnotationAtAddress(address: String) {
+        let geocoder = CLGeocoder()
+        geocoder.geocodeAddressString(address) { (placemarks, error) in
+            if let placemarks = placemarks {
+                if placemarks.count != 0 {
+                    let coordinate = placemarks.first!.location!
+                    let annotation = MKPointAnnotation()
+                    annotation.coordinate = coordinate.coordinate
+                    annotation.title = self.nameLabel.text
+                    self.mapView.addAnnotation(annotation)
+                }
+            }
+        }
+    }
+    
 }
+
+
