@@ -23,6 +23,7 @@ class FiltersViewController: UIViewController, FiltersViewControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.barTintColor = UIColor(red: 196/255, green: 18/255, blue: 0/255, alpha: 1)
 
         // Do any additional setup after loading the view.
         categories = yelpCategories()
@@ -40,7 +41,6 @@ class FiltersViewController: UIViewController, FiltersViewControllerDelegate {
     }
 
     @IBAction func onSearchButton(_ sender: AnyObject) {
-        
         var selectedCategories = [String]()
         for (row, isSelected) in switchStates {
             if isSelected {
@@ -53,7 +53,6 @@ class FiltersViewController: UIViewController, FiltersViewControllerDelegate {
         }
         
         delegate?.filtersViewController!(filtersViewController: self, didUpdateFilters: filters)
-        
         dismiss(animated: true, completion: nil)
     }
     
