@@ -70,11 +70,14 @@ class BusinessesViewController: UIViewController {
             filtersViewController.delegate = self
             
             filtersViewController.filters = filters
-        } else {
+        } else if navigationController.restorationIdentifier == "detailsNavigation"  {
             let cell = sender as! UITableViewCell
             let indexPath = tableView.indexPath(for: cell)
             let detailsViewController = navigationController.topViewController as! DetailsViewController
             detailsViewController.business = businesses![indexPath!.row]
+        } else if navigationController.restorationIdentifier == "mapNavigation" {
+            let mapViewController = navigationController.topViewController as! MapViewController
+            mapViewController.businesses = businesses
         }
      }
 }

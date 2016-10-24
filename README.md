@@ -2,7 +2,7 @@
 
 Yelp Redux is a Yelp search app using the [Yelp API](http://www.yelp.com/developers/documentation/v2/search_api).
 
-Time spent: **X** hours spent in total
+Time spent: **15** hours spent in total
 
 ## User Stories
 
@@ -23,7 +23,7 @@ The following **optional** features are implemented:
 
 - [ ] Search results page
    - [ ] Infinite scroll for restaurant results.
-   - [ ] Implement map view of restaurant results.
+   - [x] Implement map view of restaurant results.
 - [x] Filter page
    - [x] Implement a custom switch instead of the default UISwitch.
    - [x] Distance filter should expand as in the real Yelp app
@@ -51,6 +51,7 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 * The filtersViewController is quite messy and contains lots of custom code for each specific filter. It's not clean, though it seems to work :).
 * Making the switch from a Switch to a Button was more difficult than necessary - all of the functions were tied to each element's specific 'select' method. This could've been abstracted in the cell class.
 * Settings, down-arrow, the switch, back button, map, and checkmarks icon were found with [icons8](https://icons8.com).
+* Yelp Icon was found with [Soft Icons](http://www.softicons.com/social-media-icons/ios-8-style-social-media-icons-by-design-bolts/yelp-icon).
 
 ## License
 
