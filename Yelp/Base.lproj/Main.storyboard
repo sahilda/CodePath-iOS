@@ -124,6 +124,9 @@
                                 <segue destination="Jyg-PW-3ce" kind="presentation" id="prU-Hi-yPz"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="map" id="mpR-9D-hQF">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="leftBarButtonItem" destination="uwJ-bR-B5y" id="PSm-01-iB9"/>
@@ -350,6 +353,24 @@
             </objects>
             <point key="canvasLocation" x="4528.8000000000002" y="864.91754122938539"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="2Wv-Px-GLh">
+            <objects>
+                <viewController id="Wgj-ir-3iD" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jUP-6D-fWK"/>
+                        <viewControllerLayoutGuide type="bottom" id="SQ4-lt-TeB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xmq-ha-dvi">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nR0-WP-yrH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2713" y="1072"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="Kuc-cZ-kxf">
             <objects>
@@ -372,6 +393,7 @@
     <resources>
         <image name="back" width="30" height="30"/>
         <image name="cancel" width="30" height="30"/>
+        <image name="map" width="27" height="27"/>
         <image name="search" width="30" height="30"/>
         <image name="settings" width="16" height="16"/>
     </resources>

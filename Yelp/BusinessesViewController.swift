@@ -45,6 +45,7 @@ class BusinessesViewController: UIViewController {
         searchBar.sizeToFit()
         searchBar.placeholder = "Search..."
         navigationItem.titleView = searchBar
+        navigationItem.titleView?.tintColor = UIColor.white
         searchBar.delegate = self
     }
     

@@ -48,9 +48,9 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
-
-* Settings, down-arrow, the switch, back button, and checkmarks icon were found with [icons8](https://icons8.com).
+* The filtersViewController is quite messy and contains lots of custom code for each specific filter. It's not clean, though it seems to work :).
+* Making the switch from a Switch to a Button was more difficult than necessary - all of the functions were tied to each element's specific 'select' method. This could've been abstracted in the cell class.
+* Settings, down-arrow, the switch, back button, map, and checkmarks icon were found with [icons8](https://icons8.com).
 
 ## License
 
