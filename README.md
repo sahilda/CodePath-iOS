@@ -50,7 +50,7 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 Describe any challenges encountered while building the app.
 
-* Settings, down-arrow, the switch, and checkmarks icon were found with [icons8](https://icons8.com).
+* Settings, down-arrow, the switch, back button, and checkmarks icon were found with [icons8](https://icons8.com).
 
 ## License
 

@@ -64,10 +64,17 @@ class BusinessesViewController: UIViewController {
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let navigationController = segue.destination as! UINavigationController
         
-        let filtersViewController =  navigationController.topViewController as! FiltersViewController
-        filtersViewController.delegate = self
-        
-        filtersViewController.filters = filters
+        if navigationController.restorationIdentifier == "settingsNavigation" {
+            let filtersViewController = navigationController.topViewController as! FiltersViewController
+            filtersViewController.delegate = self
+            
+            filtersViewController.filters = filters
+        } else {
+            let cell = sender as! UITableViewCell
+            let indexPath = tableView.indexPath(for: cell)
+            let detailsViewController = navigationController.topViewController as! DetailsViewController
+            detailsViewController.business = businesses![indexPath!.row]
+        }
      }
 }
 
@@ -112,6 +119,11 @@ extension BusinessesViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BusinessCell", for: indexPath) as! BusinessCell
         cell.business = businesses![indexPath.row]
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
