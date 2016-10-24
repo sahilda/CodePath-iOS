@@ -17,7 +17,6 @@ class DetailsViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var categoriesLabel: UILabel!
     @IBOutlet weak var ratingsImageView: UIImageView!
     @IBOutlet weak var reviewsLabel: UILabel!
-    @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var thumbImageView: UIImageView!
