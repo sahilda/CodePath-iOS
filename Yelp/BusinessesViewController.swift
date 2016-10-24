@@ -125,20 +125,29 @@ extension BusinessesViewController: FiltersViewControllerDelegate {
         
         if filters[Sections.deals] != nil {
             deals = filters[Sections.deals] as! Bool ? true : false
+        } else {
+            deals = nil
         }
         
         if filters[Sections.distance] != nil {
             let distances = Distances.returnDistances()
-            radius = distances[filters[Sections.distance] as! Int].rawValue 
+            radius = distances[filters[Sections.distance] as! Int].rawValue
+            radius = radius == 0.0 ? nil : radius
+        } else {
+            radius = nil
         }
         
         if filters[Sections.sort] != nil {
             let index = filters[Sections.sort] as! Int
             sort = SortBy.getYelpSortMode(index: index)
+        } else {
+            sort = nil
         }
         
         if filters[Sections.category] != nil {
             categories = filters[Sections.category] as? [String]
+        } else {
+            categories = nil
         }
         
         yelpSearch(term: searchTerm, sort: sort, categories: categories, deals: deals, radius: radius)

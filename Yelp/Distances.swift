@@ -21,7 +21,7 @@ enum Distances: Double {
     
     static func getLabel(distance: Distances) -> String {
         if distance == Distances.auto {
-            return "Auto"
+            return "None"
         } else if distance == Distances.oneThird {
             return "0.3 miles"
         } else if distance == Distances.one {

@@ -24,20 +24,19 @@ The following **optional** features are implemented:
 - [ ] Search results page
    - [ ] Infinite scroll for restaurant results.
    - [ ] Implement map view of restaurant results.
-- [ ] Filter page
-   - [ ] Implement a custom switch instead of the default UISwitch.
+- [x] Filter page
+   - [x] Implement a custom switch instead of the default UISwitch.
    - [x] Distance filter should expand as in the real Yelp app
    - [x] Categories should show a subset of the full list with a "See All" row to expand. Category list is [here](http://www.yelp.com/developers/documentation/category_list).
 - [ ] Implement the restaurant detail page.
 
 The following **additional** features are implemented:
-
-- [ ] List anything else that you can get done to improve the app functionality!
+- [x] Filter selections are saved and pre-populated between search and filter view
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1.
-2.
+1. In the "tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)" function, I'd like to trigger the cell.button action - how can I do that?
+2. How to better and simple animation for objects (like the button being selected)
 
 ## Video Walkthrough
 
@@ -51,9 +50,7 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 Describe any challenges encountered while building the app.
 
-* Settings App Icon was found with [icons8](https://icons8.com/web-app/for/all/settings).
-* Downarrow: https://icons8.com/web-app/for/all/down%20arrow
-* Switch: https://icons8.com/web-app/for/all/switch
+* Settings, down-arrow, the switch, and checkmarks icon were found with [icons8](https://icons8.com).
 
 ## License
 

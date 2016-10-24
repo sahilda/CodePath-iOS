@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -23,10 +22,10 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BusinessCell" rowHeight="117" id="kaw-S0-Nt8" customClass="BusinessCell" customModule="Yelp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="375" height="117"/>
+                                        <rect key="frame" x="0.0" y="92" width="1000" height="117"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kaw-S0-Nt8" id="zZR-aS-StE">
-                                            <frame key="frameInset" width="375" height="116"/>
+                                            <frame key="frameInset" width="1000" height="116.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Dyo-CN-cdS">
@@ -153,25 +152,21 @@
                                         <rect key="frame" x="0.0" y="92" width="345" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gc2-zX-F40" id="5tz-Sv-aMV">
-                                            <frame key="frameInset" width="345" height="44"/>
+                                            <frame key="frameInset" width="345" height="44.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a2T-tl-tZB">
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kNP-zI-4Rm"/>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="kNP-zI-4Rm" firstAttribute="centerY" secondItem="5tz-Sv-aMV" secondAttribute="centerY" id="M47-sp-Xhz"/>
-                                                <constraint firstItem="kNP-zI-4Rm" firstAttribute="trailing" secondItem="5tz-Sv-aMV" secondAttribute="trailingMargin" constant="-15" id="P1f-a3-VnT"/>
                                                 <constraint firstItem="a2T-tl-tZB" firstAttribute="centerY" secondItem="5tz-Sv-aMV" secondAttribute="centerY" id="gRe-UM-GQ7"/>
                                                 <constraint firstItem="a2T-tl-tZB" firstAttribute="leading" secondItem="5tz-Sv-aMV" secondAttribute="leading" constant="15" id="mMG-ee-v6o"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="onSwitch" destination="kNP-zI-4Rm" id="ZAW-El-cIF"/>
                                             <outlet property="switchLabel" destination="a2T-tl-tZB" id="kaq-EI-gik"/>
                                         </connections>
                                     </tableViewCell>
@@ -182,17 +177,19 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="LJq-sg-ncr" secondAttribute="trailing" constant="15" id="Fbm-V8-COf"/>
                             <constraint firstItem="LJq-sg-ncr" firstAttribute="leading" secondItem="ve9-W2-o5B" secondAttribute="leading" constant="15" id="W62-90-oSQ"/>
-                            <constraint firstItem="LJq-sg-ncr" firstAttribute="top" secondItem="ve9-W2-o5B" secondAttribute="top" id="mXW-Nv-qC8"/>
-                            <constraint firstItem="LJq-sg-ncr" firstAttribute="bottom" secondItem="ve9-W2-o5B" secondAttribute="bottom" id="zBW-4B-eFz"/>
+                            <constraint firstItem="LJq-sg-ncr" firstAttribute="top" secondItem="ve9-W2-o5B" secondAttribute="top" constant="5" id="mXW-Nv-qC8"/>
+                            <constraint firstAttribute="bottom" secondItem="LJq-sg-ncr" secondAttribute="bottom" id="zwO-dv-DXL"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Filters" id="LkR-g0-K5i">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="3ox-sJ-0oE">
+                        <barButtonItem key="leftBarButtonItem" image="cancel" id="3ox-sJ-0oE">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="onCancelButton:" destination="Gxx-AY-ENS" id="NRs-TM-f94"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Search" id="G33-iF-MKP">
+                        <barButtonItem key="rightBarButtonItem" image="search" id="G33-iF-MKP">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="onSearchButton:" destination="Gxx-AY-ENS" id="jLP-lI-HHB"/>
                             </connections>
@@ -244,6 +241,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="cancel" width="32" height="32"/>
+        <image name="search" width="25" height="25"/>
         <image name="settings" width="16" height="16"/>
     </resources>
 </document>
