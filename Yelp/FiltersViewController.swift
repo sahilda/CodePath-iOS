@@ -153,6 +153,7 @@ extension FiltersViewController {
     
     func dealCell(cell: SwitchCell) {
         cell.switchLabel.text = "Offering a Deal"
+        
         if newFilters[Sections.deals] != nil {
             cell.onSwitch.isOn = newFilters[Sections.deals] as! Bool
         } else {
@@ -166,8 +167,17 @@ extension FiltersViewController {
         cell.onSwitch.isOn = false
         
         if distanceCollapsed {
-            cell.switchLabel.text = "See All"
+            if newFilters[Sections.distance] != nil {
+                cell.switchLabel.text = Distances.getLabel(distance: distances[newFilters[Sections.distance] as! Int])
+            } else {
+                cell.switchLabel.text = "See All"
+            }
             cell.onSwitch.isHidden = true
+        }
+        
+        if newFilters[Sections.distance] != nil && newFilters[Sections.distance] as! Int == index {
+            cell.switchLabel.text = Distances.getLabel(distance: distances[newFilters[Sections.distance] as! Int])
+            cell.onSwitch.isOn = true
         }
     }
     
@@ -214,12 +224,23 @@ extension FiltersViewController: SwitchCellDelegate {
         if sections[indexPath.section] == Sections.deals {
             newFilters[sections[indexPath.section]] = value as AnyObject?
         } else if sections[indexPath.section] == Sections.distance {
-            newFilters[sections[indexPath.section]] = indexPath.row as AnyObject?
+            handleDistanceSelection(switchcell: switchcell, indexPath: indexPath, value: value)
         } else if sections[indexPath.section] == Sections.sort {
             handleSortBySelection(switchcell: switchcell, indexPath: indexPath, value: value)
         } else {
             categoriesSwitchStates[indexPath.row] = value
         }
+    }
+    
+    func handleDistanceSelection(switchcell: SwitchCell, indexPath: IndexPath, value: Bool) {
+        if value == false {
+            newFilters[sections[indexPath.section]] = nil
+        } else {
+            newFilters[sections[indexPath.section]] = indexPath.row as AnyObject?
+        }
+        
+        distanceCollapsed = true
+        tableView.reloadData()
     }
     
     func handleSortBySelection(switchcell: SwitchCell, indexPath: IndexPath, value: Bool) {

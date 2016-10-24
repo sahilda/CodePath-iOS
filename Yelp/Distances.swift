@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum Distances: Float {
+enum Distances: Double {
     case auto = 0.0
     case oneThird = 0.3
     case one = 1.0

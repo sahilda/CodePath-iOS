@@ -13,6 +13,7 @@ class BusinessesViewController: UIViewController {
     var businesses: [Business]!
     var searchBar = UISearchBar()
     var searchTerm: String = ""
+    var radius: Double?
     var sort: YelpSortMode?
     var categories: [String]?
     var deals: Bool?
@@ -29,7 +30,7 @@ class BusinessesViewController: UIViewController {
         loadTableView()
         loadSearchBar()
         
-        yelpSearch(term: searchTerm, sort: sort, categories: categories, deals: deals)
+        yelpSearch(term: searchTerm, sort: sort, categories: categories, deals: deals, radius: radius)
     }
     
     func loadTableView() {
@@ -47,10 +48,10 @@ class BusinessesViewController: UIViewController {
         searchBar.delegate = self
     }
     
-    func yelpSearch(term: String, sort: YelpSortMode?, categories: [String]?, deals: Bool?) {
-        print("Searching with terms: \(term), sort: \(sort), categories: \(categories), and deals: \(deals)")
+    func yelpSearch(term: String, sort: YelpSortMode?, categories: [String]?, deals: Bool?, radius: Double?) {
+        print("Searching with terms: \(term), sort: \(sort), categories: \(categories), deals: \(deals), and radius: \(radius)")
         
-        Business.searchWithTerm(term: term, sort: sort, categories: categories, deals: deals, completion: { (businesses: [Business]?, error: Error?) -> Void in
+        Business.searchWithTerm(term: term, sort: sort, categories: categories, deals: deals, radius: radius, completion: { (businesses: [Business]?, error: Error?) -> Void in
             self.businesses = businesses
             if let _ = businesses {
                 self.tableView.reloadData()
@@ -77,7 +78,7 @@ extension BusinessesViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if searchBar.text != nil {
             searchTerm = searchBar.text!
-            yelpSearch(term: searchTerm, sort: sort, categories: categories, deals: deals)
+            yelpSearch(term: searchTerm, sort: sort, categories: categories, deals: deals, radius: radius)
         }
         searchBar.showsCancelButton = false
         searchBar.resignFirstResponder()
@@ -91,7 +92,7 @@ extension BusinessesViewController: UISearchBarDelegate {
         searchBar.showsCancelButton = false
         searchBar.resignFirstResponder()
         searchTerm = ""
-        yelpSearch(term: searchTerm, sort: sort, categories: categories, deals: deals)
+        yelpSearch(term: searchTerm, sort: sort, categories: categories, deals: deals, radius: radius)
     }
 }
 
@@ -127,7 +128,8 @@ extension BusinessesViewController: FiltersViewControllerDelegate {
         }
         
         if filters[Sections.distance] != nil {
-            //distances = filters["categories"] as? [String]
+            let distances = Distances.returnDistances()
+            radius = distances[filters[Sections.distance] as! Int].rawValue 
         }
         
         if filters[Sections.sort] != nil {
@@ -139,7 +141,7 @@ extension BusinessesViewController: FiltersViewControllerDelegate {
             categories = filters[Sections.category] as? [String]
         }
         
-        yelpSearch(term: searchTerm, sort: sort, categories: categories, deals: deals)
+        yelpSearch(term: searchTerm, sort: sort, categories: categories, deals: deals, radius: radius)
     }
     
 }
