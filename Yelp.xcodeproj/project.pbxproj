@@ -20,6 +20,11 @@
 		6F16ED481DBCA813007E73FE /* BusinessCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F16ED471DBCA813007E73FE /* BusinessCell.swift */; };
 		6F16ED4A1DBD46AB007E73FE /* SwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F16ED491DBD46AB007E73FE /* SwitchCell.swift */; };
 		6F16ED4C1DBD47D0007E73FE /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F16ED4B1DBD47D0007E73FE /* FiltersViewController.swift */; };
+		6F16ED4E1DBDA8AB007E73FE /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F16ED4D1DBDA8AB007E73FE /* Categories.swift */; };
+		6F16ED501DBDAABF007E73FE /* YelpRedColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F16ED4F1DBDAABF007E73FE /* YelpRedColor.swift */; };
+		6F16ED541DBDC6EB007E73FE /* SortBy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F16ED531DBDC6EB007E73FE /* SortBy.swift */; };
+		6F16ED561DBDE2FA007E73FE /* Distances.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F16ED551DBDE2FA007E73FE /* Distances.swift */; };
+		6F16ED581DBDE8A6007E73FE /* Sections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F16ED571DBDE8A6007E73FE /* Sections.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +55,11 @@
 		6F16ED471DBCA813007E73FE /* BusinessCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessCell.swift; sourceTree = "<group>"; };
 		6F16ED491DBD46AB007E73FE /* SwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchCell.swift; sourceTree = "<group>"; };
 		6F16ED4B1DBD47D0007E73FE /* FiltersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiltersViewController.swift; sourceTree = "<group>"; };
+		6F16ED4D1DBDA8AB007E73FE /* Categories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
+		6F16ED4F1DBDAABF007E73FE /* YelpRedColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpRedColor.swift; sourceTree = "<group>"; };
+		6F16ED531DBDC6EB007E73FE /* SortBy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortBy.swift; sourceTree = "<group>"; };
+		6F16ED551DBDE2FA007E73FE /* Distances.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Distances.swift; sourceTree = "<group>"; };
+		6F16ED571DBDE8A6007E73FE /* Sections.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sections.swift; sourceTree = "<group>"; };
 		883322706A784248B16F444A /* Pods-Yelp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yelp.release.xcconfig"; path = "Pods/Target Support Files/Pods-Yelp/Pods-Yelp.release.xcconfig"; sourceTree = "<group>"; };
 		9B128C050DE78660DE2A8E75 /* Pods-YelpTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YelpTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-YelpTests/Pods-YelpTests.release.xcconfig"; sourceTree = "<group>"; };
 		AA3C5CF4FD317D72ABE2AAC4 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -149,7 +159,12 @@
 		22AAAA9A1AEA0AA100A544AF /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				6F16ED4F1DBDAABF007E73FE /* YelpRedColor.swift */,
 				22AAAA981AEA0A9700A544AF /* Business.swift */,
+				6F16ED4D1DBDA8AB007E73FE /* Categories.swift */,
+				6F16ED531DBDC6EB007E73FE /* SortBy.swift */,
+				6F16ED551DBDE2FA007E73FE /* Distances.swift */,
+				6F16ED571DBDE8A6007E73FE /* Sections.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -397,13 +412,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F16ED541DBDC6EB007E73FE /* SortBy.swift in Sources */,
+				6F16ED581DBDE8A6007E73FE /* Sections.swift in Sources */,
 				6F16ED481DBCA813007E73FE /* BusinessCell.swift in Sources */,
+				6F16ED4E1DBDA8AB007E73FE /* Categories.swift in Sources */,
 				22AAAA9C1AEA1EC300A544AF /* BusinessesViewController.swift in Sources */,
 				6F16ED4C1DBD47D0007E73FE /* FiltersViewController.swift in Sources */,
 				22AAAA991AEA0A9700A544AF /* Business.swift in Sources */,
 				222D8A7D19CCFAE000D2DB53 /* YelpClient.swift in Sources */,
 				222D8A5B19CCF9F900D2DB53 /* AppDelegate.swift in Sources */,
 				6F16ED4A1DBD46AB007E73FE /* SwitchCell.swift in Sources */,
+				6F16ED561DBDE2FA007E73FE /* Distances.swift in Sources */,
+				6F16ED501DBDAABF007E73FE /* YelpRedColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

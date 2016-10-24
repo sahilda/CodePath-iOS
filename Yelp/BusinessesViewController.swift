@@ -16,22 +16,20 @@ class BusinessesViewController: UIViewController {
     var sort: YelpSortMode?
     var categories: [String]?
     var deals: Bool?
+    var filters = [Sections: AnyObject]()
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var leftBarButtonItem: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.navigationBar.barTintColor = getYelpRedColor()
+        navigationController?.navigationBar.barTintColor = YelpRedColor.getYelpRedColor()
         
         loadTableView()
         loadSearchBar()
         
         yelpSearch(term: searchTerm, sort: sort, categories: categories, deals: deals)
-    }
-    
-    func getYelpRedColor() -> UIColor {
-        return UIColor(red: 196/255, green: 18/255, blue: 0/255, alpha: 1)
     }
     
     func loadTableView() {
@@ -67,6 +65,8 @@ class BusinessesViewController: UIViewController {
         
         let filtersViewController =  navigationController.topViewController as! FiltersViewController
         filtersViewController.delegate = self
+        
+        filtersViewController.filters = filters
      }
 }
 
@@ -118,9 +118,25 @@ extension BusinessesViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension BusinessesViewController: FiltersViewControllerDelegate {
     
-    func filtersViewController(filtersViewController: FiltersViewController, didUpdateFilters filters: [String : AnyObject]) {
-        if filters["categories"] != nil {
-            categories = filters["categories"] as? [String]
+    func filtersViewController(filtersViewController: FiltersViewController, didUpdateFilters filters: [Sections : AnyObject]) {
+        
+        self.filters = filters
+        
+        if filters[Sections.deals] != nil {
+            deals = filters[Sections.deals] as! Bool ? true : false
+        }
+        
+        if filters[Sections.distance] != nil {
+            //distances = filters["categories"] as? [String]
+        }
+        
+        if filters[Sections.sort] != nil {
+            let index = filters[Sections.sort] as! Int
+            sort = SortBy.getYelpSortMode(index: index)
+        }
+        
+        if filters[Sections.category] != nil {
+            categories = filters[Sections.category] as? [String]
         }
         
         yelpSearch(term: searchTerm, sort: sort, categories: categories, deals: deals)
