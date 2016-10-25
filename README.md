@@ -21,8 +21,8 @@ The following **required** functionality is completed:
 
 The following **optional** features are implemented:
 
-- [ ] Search results page
-   - [ ] Infinite scroll for restaurant results.
+- [x] Search results page
+   - [x] Infinite scroll for restaurant results.
    - [x] Implement map view of restaurant results.
 - [x] Filter page
    - [x] Implement a custom switch instead of the default UISwitch.
@@ -44,6 +44,7 @@ Please list two areas of the assignment you'd like to **discuss further with you
 Here's a walkthrough of implemented user stories (iPhone 6):
 
 <img src='http://i.imgur.com/tZ4gAc2.gif' title='Video Walkthrough iphone6' width='' alt='Video Walkthrough' />
+<img src='http://i.imgur.com/DrcB8tk.gif' title='Video Walkthrough iphone6' width='' alt='Video Walkthrough' />
 
 And how the views look on other devices (iPhone SE, and an iPhone 7 Plus):
 

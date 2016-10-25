@@ -17,7 +17,9 @@ class BusinessesViewController: UIViewController {
     var sort: YelpSortMode?
     var categories: [String]?
     var deals: Bool?
+    var offset: Int = 0
     var filters = [Sections: AnyObject]()
+    var isMoreDataLoading = false
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var leftBarButtonItem: UIBarButtonItem!
@@ -30,7 +32,8 @@ class BusinessesViewController: UIViewController {
         loadTableView()
         loadSearchBar()
         
-        yelpSearch(term: searchTerm, sort: sort, categories: categories, deals: deals, radius: radius)
+        offset = 0
+        yelpSearch(term: searchTerm, sort: sort, categories: categories, deals: deals, radius: radius, offset: offset)
     }
     
     func loadTableView() {
@@ -49,13 +52,14 @@ class BusinessesViewController: UIViewController {
         searchBar.delegate = self
     }
     
-    func yelpSearch(term: String, sort: YelpSortMode?, categories: [String]?, deals: Bool?, radius: Double?) {
-        print("Searching with terms: \(term), sort: \(sort), categories: \(categories), deals: \(deals), and radius: \(radius)")
+    func yelpSearch(term: String, sort: YelpSortMode?, categories: [String]?, deals: Bool?, radius: Double?, offset: Int?) {
+        print("Searching with terms: \(term), sort: \(sort), categories: \(categories), deals: \(deals), radius: \(radius), and offset: \(offset)")
         
-        Business.searchWithTerm(term: term, sort: sort, categories: categories, deals: deals, radius: radius, completion: { (businesses: [Business]?, error: Error?) -> Void in
+        Business.searchWithTerm(term: term, sort: sort, categories: categories, deals: deals, radius: radius, offset: offset, completion: { (businesses: [Business]?, error: Error?) -> Void in
             self.businesses = businesses
             if let _ = businesses {
                 self.tableView.reloadData()
+                print("Count: \(businesses!.count)")
             }
         })
     }
@@ -89,7 +93,8 @@ extension BusinessesViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if searchBar.text != nil {
             searchTerm = searchBar.text!
-            yelpSearch(term: searchTerm, sort: sort, categories: categories, deals: deals, radius: radius)
+            offset = 0
+            yelpSearch(term: searchTerm, sort: sort, categories: categories, deals: deals, radius: radius, offset: offset)
         }
         searchBar.showsCancelButton = false
         searchBar.resignFirstResponder()
@@ -103,7 +108,8 @@ extension BusinessesViewController: UISearchBarDelegate {
         searchBar.showsCancelButton = false
         searchBar.resignFirstResponder()
         searchTerm = ""
-        yelpSearch(term: searchTerm, sort: sort, categories: categories, deals: deals, radius: radius)
+        offset = 0
+        yelpSearch(term: searchTerm, sort: sort, categories: categories, deals: deals, radius: radius, offset: offset)
     }
 }
 
@@ -129,6 +135,35 @@ extension BusinessesViewController: UITableViewDataSource, UITableViewDelegate {
 
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    
+    func loadMoreData() {
+        offset = offset + 20
+        
+        print("Searching with terms: \(searchTerm), sort: \(sort), categories: \(categories), deals: \(deals), radius: \(radius), and offset: \(offset)")
+            
+        Business.searchWithTerm(term: searchTerm, sort: sort, categories: categories, deals: deals, radius: radius, offset: offset, completion: { (businesses: [Business]?, error: Error?) -> Void in
+            if let _ = businesses {
+                self.businesses = self.businesses + businesses!
+                self.isMoreDataLoading = false
+                self.tableView.reloadData()
+            }
+        })
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if (!isMoreDataLoading) {
+            // Calculate the position of one screen length before the bottom of the results
+            let scrollViewContentHeight = tableView.contentSize.height
+            let scrollOffsetThreshold = scrollViewContentHeight - tableView.bounds.size.height
+            // When the user has scrolled past the threshold, start requesting
+            if(scrollView.contentOffset.y > scrollOffsetThreshold && tableView.isDragging) {
+                isMoreDataLoading = true
+                // Code to load more results
+                loadMoreData()
+            }
+        }
+    }
+    
 }
 
 // MARK: FiltersViewControllerDelegate
@@ -166,7 +201,8 @@ extension BusinessesViewController: FiltersViewControllerDelegate {
             categories = nil
         }
         
-        yelpSearch(term: searchTerm, sort: sort, categories: categories, deals: deals, radius: radius)
+        offset = 0
+        yelpSearch(term: searchTerm, sort: sort, categories: categories, deals: deals, radius: radius, offset: offset)
     }
     
 }
