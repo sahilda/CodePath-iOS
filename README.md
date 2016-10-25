@@ -41,9 +41,12 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 ## Video Walkthrough
 
-Here's a walkthrough of implemented user stories (iPhone 6, iPhone SE, and an iPhone 7 Plus):
+Here's a walkthrough of implemented user stories (iPhone 6):
 
 <img src='http://i.imgur.com/tZ4gAc2.gif' title='Video Walkthrough iphone6' width='' alt='Video Walkthrough' />
+
+And how the views look on other devices (iPhone SE, and an iPhone 7 Plus):
+
 <img src='http://i.imgur.com/UBM8hfS.gif' title='Video Walkthrough iphoneSE' width='' alt='Video Walkthrough' />
 <img src='http://i.imgur.com/cNw1jiY.gif' title='Video Walkthrough iphone7Plus' width='' alt='Video Walkthrough' />
 
