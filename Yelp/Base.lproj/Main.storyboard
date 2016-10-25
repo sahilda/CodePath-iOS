@@ -258,7 +258,7 @@
                             </label>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yba-eK-JF1">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="250" id="QDZ-Tz-LqI"/>
+                                    <constraint firstAttribute="height" constant="392" id="QDZ-Tz-LqI"/>
                                 </constraints>
                             </mapView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="578 Reviews" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3xW-Fx-dzn">
@@ -312,6 +312,7 @@
                             <constraint firstAttribute="trailing" secondItem="PGq-64-3Ke" secondAttribute="trailing" constant="12" id="TyV-rW-waH"/>
                             <constraint firstItem="PGq-64-3Ke" firstAttribute="top" secondItem="98g-mt-XtR" secondAttribute="bottom" constant="12" id="XvO-oQ-twd"/>
                             <constraint firstItem="wxe-JP-AIi" firstAttribute="top" secondItem="07K-ZH-KZy" secondAttribute="bottom" constant="12" id="dfp-SW-FXn"/>
+                            <constraint firstItem="Yba-eK-JF1" firstAttribute="top" relation="greaterThanOrEqual" secondItem="bU7-lg-RBK" secondAttribute="bottom" constant="10" id="gYj-5G-H2t"/>
                             <constraint firstItem="wxe-JP-AIi" firstAttribute="leading" secondItem="1x8-Go-5d8" secondAttribute="leading" constant="16" id="p2B-ir-Ffr"/>
                             <constraint firstItem="PGq-64-3Ke" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="MP0-4r-nx2" secondAttribute="trailing" constant="5" id="sSG-7l-iWp"/>
                             <constraint firstItem="1kV-I9-JRk" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Yba-eK-JF1" secondAttribute="bottom" constant="25" id="sjw-7c-wJQ"/>

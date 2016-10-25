@@ -32,6 +32,7 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 - [x] Filter selections are saved and pre-populated between search and filter view
+- [x] Map View on the details page
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
@@ -40,9 +41,11 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 ## Video Walkthrough
 
-Here's a walkthrough of implemented user stories:
+Here's a walkthrough of implemented user stories (iPhone 6, iPhone SE, and an iPhone 7 Plus):
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://i.imgur.com/tZ4gAc2.gif' title='Video Walkthrough iphone6' width='' alt='Video Walkthrough' />
+<img src='http://i.imgur.com/UBM8hfS.gif' title='Video Walkthrough iphoneSE' width='' alt='Video Walkthrough' />
+<img src='http://i.imgur.com/cNw1jiY.gif' title='Video Walkthrough iphone7Plus' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
@@ -52,6 +55,7 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 * Making the switch from a Switch to a Button was more difficult than necessary - all of the functions were tied to each element's specific 'select' method. This could've been abstracted in the cell class.
 * Settings, down-arrow, the switch, back button, map, and checkmarks icon were found with [icons8](https://icons8.com).
 * Yelp Icon was found with [Soft Icons](http://www.softicons.com/social-media-icons/ios-8-style-social-media-icons-by-design-bolts/yelp-icon).
+* Gif optimized with [ezgif](http://ezgif.com/optimize).
 
 ## License
 
