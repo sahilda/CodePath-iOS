@@ -20,7 +20,7 @@ class repoCell: UITableViewCell {
             forksImage.image = UIImage(named: "fork")
             forksLabel.text = String(describing: repo.forks!)
             repoDescriptionLabel.text = repo.repoDescription
-        }}
+    }}
     var name: String! 
     var owner: String!
     var stars: Int!
