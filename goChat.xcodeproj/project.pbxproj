@@ -7,21 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F925D50A061195E288175DB /* Pods_goChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20043F7DE9412807684ADFE6 /* Pods_goChat.framework */; };
+		6F8849671DC2F6C5009903CD /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8849661DC2F6C5009903CD /* ChatViewController.swift */; };
+		6F88496A1DC2FD9C009903CD /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8849691DC2FD9C009903CD /* MessageCell.swift */; };
 		6FA549A11DC2EB7B00058287 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA549A01DC2EB7B00058287 /* AppDelegate.swift */; };
-		6FA549A31DC2EB7B00058287 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA549A21DC2EB7B00058287 /* ViewController.swift */; };
+		6FA549A31DC2EB7B00058287 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA549A21DC2EB7B00058287 /* LoginViewController.swift */; };
 		6FA549A61DC2EB7B00058287 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6FA549A41DC2EB7B00058287 /* Main.storyboard */; };
 		6FA549A81DC2EB7B00058287 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6FA549A71DC2EB7B00058287 /* Assets.xcassets */; };
 		6FA549AB1DC2EB7B00058287 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6FA549A91DC2EB7B00058287 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		20043F7DE9412807684ADFE6 /* Pods_goChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_goChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F8849651DC2F3C4009903CD /* goChat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = goChat.entitlements; sourceTree = "<group>"; };
+		6F8849661DC2F6C5009903CD /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		6F8849691DC2FD9C009903CD /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		6FA5499D1DC2EB7B00058287 /* goChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = goChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FA549A01DC2EB7B00058287 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		6FA549A21DC2EB7B00058287 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		6FA549A21DC2EB7B00058287 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		6FA549A51DC2EB7B00058287 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6FA549A71DC2EB7B00058287 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6FA549AA1DC2EB7B00058287 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6FA549AC1DC2EB7B00058287 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BA099532BB3B30C42D465F0C /* Pods-goChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-goChat/Pods-goChat.release.xcconfig"; sourceTree = "<group>"; };
+		C15911ED2BA2E6B7C2381D48 /* Pods-goChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-goChat/Pods-goChat.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +38,45 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F925D50A061195E288175DB /* Pods_goChat.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D9C46450D30D2CB13FF9235 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				20043F7DE9412807684ADFE6 /* Pods_goChat.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6F8849681DC2F6CA009903CD /* viewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				6FA549A21DC2EB7B00058287 /* LoginViewController.swift */,
+				6F8849661DC2F6C5009903CD /* ChatViewController.swift */,
+			);
+			name = viewControllers;
+			sourceTree = "<group>";
+		};
+		6F88496B1DC2FDA9009903CD /* model */ = {
+			isa = PBXGroup;
+			children = (
+				6F8849691DC2FD9C009903CD /* MessageCell.swift */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
 		6FA549941DC2EB7B00058287 = {
 			isa = PBXGroup;
 			children = (
 				6FA5499F1DC2EB7B00058287 /* goChat */,
 				6FA5499E1DC2EB7B00058287 /* Products */,
+				F86233E85DD2A109C15C12D4 /* Pods */,
+				0D9C46450D30D2CB13FF9235 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +91,25 @@
 		6FA5499F1DC2EB7B00058287 /* goChat */ = {
 			isa = PBXGroup;
 			children = (
+				6F88496B1DC2FDA9009903CD /* model */,
+				6F8849681DC2F6CA009903CD /* viewControllers */,
+				6F8849651DC2F3C4009903CD /* goChat.entitlements */,
 				6FA549A01DC2EB7B00058287 /* AppDelegate.swift */,
-				6FA549A21DC2EB7B00058287 /* ViewController.swift */,
 				6FA549A41DC2EB7B00058287 /* Main.storyboard */,
 				6FA549A71DC2EB7B00058287 /* Assets.xcassets */,
 				6FA549A91DC2EB7B00058287 /* LaunchScreen.storyboard */,
 				6FA549AC1DC2EB7B00058287 /* Info.plist */,
 			);
 			path = goChat;
+			sourceTree = "<group>";
+		};
+		F86233E85DD2A109C15C12D4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C15911ED2BA2E6B7C2381D48 /* Pods-goChat.debug.xcconfig */,
+				BA099532BB3B30C42D465F0C /* Pods-goChat.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +119,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6FA549AF1DC2EB7B00058287 /* Build configuration list for PBXNativeTarget "goChat" */;
 			buildPhases = (
+				E4D076EF52DFC539210D56F2 /* [CP] Check Pods Manifest.lock */,
 				6FA549991DC2EB7B00058287 /* Sources */,
 				6FA5499A1DC2EB7B00058287 /* Frameworks */,
 				6FA5499B1DC2EB7B00058287 /* Resources */,
+				8037A73390707782C6F45BB8 /* [CP] Embed Pods Frameworks */,
+				9B5F40E8EB6887B9A70C80E7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -97,6 +148,11 @@
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = 9AC9J6TPZS;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -131,12 +187,62 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		8037A73390707782C6F45BB8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-goChat/Pods-goChat-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9B5F40E8EB6887B9A70C80E7 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-goChat/Pods-goChat-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E4D076EF52DFC539210D56F2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		6FA549991DC2EB7B00058287 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6FA549A31DC2EB7B00058287 /* ViewController.swift in Sources */,
+				6FA549A31DC2EB7B00058287 /* LoginViewController.swift in Sources */,
+				6F88496A1DC2FD9C009903CD /* MessageCell.swift in Sources */,
+				6F8849671DC2F6C5009903CD /* ChatViewController.swift in Sources */,
 				6FA549A11DC2EB7B00058287 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -256,8 +362,10 @@
 		};
 		6FA549B01DC2EB7B00058287 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C15911ED2BA2E6B7C2381D48 /* Pods-goChat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = goChat/goChat.entitlements;
 				DEVELOPMENT_TEAM = 9AC9J6TPZS;
 				INFOPLIST_FILE = goChat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -269,8 +377,10 @@
 		};
 		6FA549B11DC2EB7B00058287 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BA099532BB3B30C42D465F0C /* Pods-goChat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = goChat/goChat.entitlements;
 				DEVELOPMENT_TEAM = 9AC9J6TPZS;
 				INFOPLIST_FILE = goChat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -299,6 +409,7 @@
 				6FA549B11DC2EB7B00058287 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
