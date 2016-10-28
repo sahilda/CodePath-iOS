@@ -25,11 +25,11 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.estimatedRowHeight = 50
         tableView.rowHeight = UITableViewAutomaticDimension
         
-        Timer.scheduledTimer(timeInterval: 5, target: self, selector: Selector("refresh"), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(refresh), userInfo: nil, repeats: true)
     }
     
     @IBAction func submitPressed(_ sender: UIButton) {
-        let message = PFObject(className:"Message")
+        let message = PFObject(className:"MessageSF")
         message["user"] = PFUser.current();
         message["text"] = messageField.text!
         message.saveInBackground { (success, error) in
@@ -39,6 +39,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
                 NSLog("Failed")
             }
         }
+        messageField.text = ""
     }
     
     @IBAction func LogoutPressed(_ sender: UIBarButtonItem) {
@@ -46,7 +47,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func refresh() {
-        var query = PFQuery(className:"Message")
+        let query = PFQuery(className:"MessageSF")
         query.addDescendingOrder("createdAt")
         query.includeKey("user")
         query.findObjectsInBackground {
@@ -61,7 +62,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
                         if object["text"] != nil {
                             var message = object["text"] as! String
                             if object["user"] != nil {
-                                message = "\(object["user"] as! String): \(object["text"] as! String)"
+                                let user = object["user"] as! PFUser
+                                message = "\(user.username!): \(object["text"] as! String)"
                             }
                             self.allMessages.append(message)
                             print(object.objectId)
