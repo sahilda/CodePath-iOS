@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0800"
+   LastUpgradeVersion = "0700"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6FD5933F1DC441AC001254E3"
-               BuildableName = "tweet_beat.app"
-               BlueprintName = "tweet_beat"
-               ReferencedContainer = "container:tweet_beat.xcodeproj">
+               BlueprintIdentifier = "DD10E24D4AEF55AF26281F5A498AA1A4"
+               BuildableName = "Pods_tweet_beat.framework"
+               BlueprintName = "Pods-tweet_beat"
+               ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -29,15 +29,6 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6FD5933F1DC441AC001254E3"
-            BuildableName = "tweet_beat.app"
-            BlueprintName = "tweet_beat"
-            ReferencedContainer = "container:tweet_beat.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -51,16 +42,15 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6FD5933F1DC441AC001254E3"
-            BuildableName = "tweet_beat.app"
-            BlueprintName = "tweet_beat"
-            ReferencedContainer = "container:tweet_beat.xcodeproj">
+            BlueprintIdentifier = "DD10E24D4AEF55AF26281F5A498AA1A4"
+            BuildableName = "Pods_tweet_beat.framework"
+            BlueprintName = "Pods-tweet_beat"
+            ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -70,16 +60,6 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6FD5933F1DC441AC001254E3"
-            BuildableName = "tweet_beat.app"
-            BlueprintName = "tweet_beat"
-            ReferencedContainer = "container:tweet_beat.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
