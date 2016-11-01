@@ -106,6 +106,7 @@ extension TweetsViewController: UITableViewDelegate, UITableViewDataSource {
         cell.usernameLabel.text = "@\(tweet.screenname!)"
         cell.dateLabel.text = tweet.timeback
         cell.tweetLabel.text = tweet.text
+        cell.tweetId = tweet.id
         
         let retweeted = tweet.retweeted
         let liked = tweet.favorited

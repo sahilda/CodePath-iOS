@@ -9,6 +9,8 @@
 import UIKit
 
 class tweetCell: UITableViewCell {
+    
+    var tweetId: Int = 0
 
     @IBOutlet weak var avatorImageView: UIImageView!
     @IBOutlet weak var dateLabel: UILabel!
@@ -19,15 +21,39 @@ class tweetCell: UITableViewCell {
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var replyButton: UIButton!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    @IBAction func retweetButtonPressed(_ sender: AnyObject) {
+        
+        if (!retweetButton.isSelected) {
+            retweetButton.isSelected = true
+            TwitterClient.sharedInstance?.createRetweet(id: tweetId, success: { (tweet: Tweet) -> () in
+                }, failure: { (error: Error) -> () in
+                    print(error.localizedDescription)
+            })
+        } else {
+            retweetButton.isSelected = false
+            TwitterClient.sharedInstance?.destroyRetweet(id: tweetId, success: { (tweet: Tweet) -> () in
+                }, failure: { (error: Error) -> () in
+                    print(error.localizedDescription)
+            })
+        }
+        
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    @IBAction func likedButtonPressed(_ sender: AnyObject) {
+        
+        if (!likeButton.isSelected) {
+            likeButton.isSelected = true
+            TwitterClient.sharedInstance?.createFavorite(id: tweetId, success: { (tweet: Tweet) -> () in
+                }, failure: { (error: Error) -> () in
+                    print(error.localizedDescription)
+            })
+        } else {
+            likeButton.isSelected = false
+            TwitterClient.sharedInstance?.destroyFavorite(id: tweetId, success: { (tweet: Tweet) -> () in
+                }, failure: { (error: Error) -> () in
+                    print(error.localizedDescription)
+            })
+        }
+        
     }
-
 }

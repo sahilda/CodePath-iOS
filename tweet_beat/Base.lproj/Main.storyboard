@@ -118,6 +118,9 @@
                                                     </constraints>
                                                     <state key="normal" image="default_retweet"/>
                                                     <state key="selected" image="pressed_retweet"/>
+                                                    <connections>
+                                                        <action selector="retweetButtonPressed:" destination="hsk-qZ-Ktv" eventType="touchUpInside" id="ayl-m2-yu0"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iYG-9Q-slS">
                                                     <constraints>
@@ -126,6 +129,9 @@
                                                     </constraints>
                                                     <state key="normal" image="default_like"/>
                                                     <state key="selected" image="pressed_like"/>
+                                                    <connections>
+                                                        <action selector="likedButtonPressed:" destination="hsk-qZ-Ktv" eventType="touchUpInside" id="PXu-ZY-44n"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ygf-7Z-Ux7">
                                                     <constraints>
