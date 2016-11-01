@@ -14,6 +14,7 @@ class TweetsViewController: UIViewController {
     
     var tweets: [Tweet]!
     var user: User!
+    var isMoreDataLoading = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -159,4 +160,33 @@ extension TweetsViewController {
         self.tableView.reloadData()
     }
     
+}
+
+extension TweetsViewController {
+    
+    func getMoreTweets() {
+        TwitterClient.sharedInstance?.homeTimeline(success: { (tweets: [Tweet]) -> () in
+            self.tweets = self.tweets + tweets
+            self.isMoreDataLoading = false
+            self.tableView.reloadData()
+            
+        }, failure: { (error: Error) -> () in
+            print(error.localizedDescription)
+        })
+    }
+    
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if (!isMoreDataLoading) {
+            // Calculate the position of one screen length before the bottom of the results
+            let scrollViewContentHeight = tableView.contentSize.height
+            let scrollOffsetThreshold = scrollViewContentHeight - tableView.bounds.size.height
+            // When the user has scrolled past the threshold, start requesting
+            if(scrollView.contentOffset.y > scrollOffsetThreshold && tableView.isDragging) {
+                isMoreDataLoading = true
+                // Code to load more results
+                getMoreTweets()
+            }
+        }
+    }
 }
