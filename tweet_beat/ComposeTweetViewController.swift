@@ -10,10 +10,12 @@ import UIKit
 
 class ComposeTweetViewController: UIViewController, UITextViewDelegate {
     
+    var user: User!
     var name: String!
     var screenname: String!
     var avatorURL: URL!
     var tweetCharacterCount = 140
+    var startingText: String?
     weak var delegate: ComposeTweetDelegate?
     
     @IBOutlet weak var nameLabel: UILabel!
@@ -27,11 +29,17 @@ class ComposeTweetViewController: UIViewController, UITextViewDelegate {
 
         // Do any additional setup after loading the view.
         loadNavigationBar()
+        loadData()
+        loadTextView()
+    }
+    
+    func loadData() {
+        avatorURL = user.profileURL!
+        name = user.name!
+        screenname = "@\(user.screenname!)"
         nameLabel.text = name
         screennameLabel.text = screenname
         avatorImageView.setImageWith(avatorURL)
-        
-        loadTextView()
     }
     
     func loadTextView() {
@@ -51,6 +59,9 @@ class ComposeTweetViewController: UIViewController, UITextViewDelegate {
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         textView.text = nil
+        if startingText != nil {
+            textView.text = startingText
+        }
     }
     
     func textViewDidChange(_ textView: UITextView) {

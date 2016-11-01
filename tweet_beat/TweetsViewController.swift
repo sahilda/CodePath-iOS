@@ -11,6 +11,7 @@ import UIKit
 class TweetsViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    
     var tweets: [Tweet]!
     var user: User!
     
@@ -21,8 +22,6 @@ class TweetsViewController: UIViewController {
         loadRefreshControl()
         getTweets()
         user = User.currentUser!
-        
-        postTweet(tweet: "yay")
     }
     
     func getTweets(refreshControl: UIRefreshControl? = nil) {
@@ -81,10 +80,7 @@ extension TweetsViewController: ComposeTweetDelegate {
     }
     
     func postTweet(tweet: String) {
-        TwitterClient.sharedInstance?.postStatus(tweet: tweet, success: { (tweet: Tweet) -> () in
-            print("posted.")
-            self.getTweets()
-            self.tableView.reloadData()
+        TwitterClient.sharedInstance?.postStatus(tweet: tweet, reply_id: nil, success: { (tweet: Tweet) -> () in
         }, failure: { (error: Error) -> () in
             print(error.localizedDescription)
         })
@@ -110,7 +106,22 @@ extension TweetsViewController: UITableViewDelegate, UITableViewDataSource {
         cell.usernameLabel.text = "@\(tweet.screenname!)"
         cell.dateLabel.text = tweet.timeback
         cell.tweetLabel.text = tweet.text
-    
+        
+        let retweeted = tweet.retweeted
+        let liked = tweet.favorited
+        
+        if(retweeted) {
+            cell.retweetButton.isSelected = true
+        } else {
+            cell.retweetButton.isSelected = false
+        }
+        
+        if(liked) {
+            cell.likeButton.isSelected = true
+        } else {
+            cell.likeButton.isSelected = false
+        }
+        
         return cell
     }
     
@@ -121,15 +132,14 @@ extension TweetsViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension TweetsViewController {
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         let navigationController = segue.destination as! UINavigationController
         
         if (navigationController.restorationIdentifier == "composeNavigation") {
             let vc = navigationController.topViewController as! ComposeTweetViewController
-            vc.avatorURL = user.profileURL!
-            vc.name = user.name!
-            vc.screenname = "@\(user.screenname!)"
+            vc.user = user
             vc.delegate = self
         }
         
@@ -139,6 +149,13 @@ extension TweetsViewController {
             let indexPath = tableView.indexPath(for: cell)
             let tweet = tweets[(indexPath?.row)!]
             vc.tweet = tweet
+            vc.user = user
         }
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.getTweets()
+        self.tableView.reloadData()
+    }
+    
 }

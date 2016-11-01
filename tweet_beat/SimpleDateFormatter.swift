@@ -47,6 +47,8 @@ class SimpleDateFormatter: NSObject {
         if (components.hour! > 12) {
             timeOfDay = "PM"
             hour = components.hour! - 12
+        } else if (components.hour! == 0) {
+            hour = 12
         }
         
         return "\(components.month!)\\\(components.day!)\\\(components.year!), \(hour!):\(components.minute!) \(timeOfDay)"

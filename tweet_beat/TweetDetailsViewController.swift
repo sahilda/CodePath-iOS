@@ -10,7 +10,12 @@ import UIKit
 
 class TweetDetailsViewController: UIViewController {
     
+    var user: User!
     var tweet: Tweet!
+    var liked = false
+    var likedCount = 0
+    var retweeted = false
+    var retweetedCount = 0
     
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var tweetLabel: UILabel!
@@ -47,24 +52,104 @@ class TweetDetailsViewController: UIViewController {
         nameLabel.text = tweet.name
         usernameLabel.text = tweet.screenname
         dateLabel.text = tweet.timestamp
-        retweetsCountLabel.text = "\(tweet.retweetCount)"
-        favoritesCountLabel.text = "\(tweet.favoritesCount)"
+        retweetedCount = tweet.retweetCount
+        retweetsCountLabel.text = "\(retweetedCount)"
+        likedCount = tweet.favoritesCount
+        favoritesCountLabel.text = "\(likedCount)"
+        liked = tweet.favorited
+        retweeted = tweet.retweeted
     }
     
     func loadButtons() {
-        retweetButton.setImage(UIImage(named: "default_retweet"), for: .normal)
-        likeButton.setImage(UIImage(named: "default_like"), for: .normal)
-        replyButton.setImage(UIImage(named: "default_reply"), for: .normal)
+        
+        if(retweeted) {
+            retweetButton.isSelected = true
+        } else {
+            retweetButton.isSelected = false
+        }
+        
+        if(liked) {
+            likeButton.isSelected = true
+        } else {
+            likeButton.isSelected = false
+        }
+        
     }
     
     @IBAction func homeButton(_ sender: AnyObject) {
         dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func replyButton(_ sender: AnyObject) {
-        
+    @IBAction func retweetButtonPressed(_ sender: AnyObject) {
+        if (!retweetButton.isSelected) {
+            retweetButton.isSelected = true
+            TwitterClient.sharedInstance?.createRetweet(id: tweet.id, success: { (tweet: Tweet) -> () in
+                self.retweetedCount = self.retweetedCount + 1
+                self.retweetsCountLabel.text = "\(self.retweetedCount)"
+                }, failure: { (error: Error) -> () in
+                    print(error.localizedDescription)
+            })
+        } else {
+            retweetButton.isSelected = false
+            TwitterClient.sharedInstance?.destroyRetweet(id: tweet.id, success: { (tweet: Tweet) -> () in
+                self.retweetedCount = self.retweetedCount - 1
+                self.retweetsCountLabel.text = "\(self.retweetedCount)"
+                }, failure: { (error: Error) -> () in
+                    print(error.localizedDescription)
+            })
+        }
     }
     
+    @IBAction func likeButtonPressed(_ sender: AnyObject) {
+        if (!likeButton.isSelected) {
+            likeButton.isSelected = true
+            TwitterClient.sharedInstance?.createFavorite(id: tweet.id, success: { (tweet: Tweet) -> () in
+                self.likedCount = self.likedCount + 1
+                self.favoritesCountLabel.text = "\(self.likedCount)"
+                }, failure: { (error: Error) -> () in
+                    print(error.localizedDescription)
+            })
+        } else {
+            likeButton.isSelected = false
+            TwitterClient.sharedInstance?.destroyFavorite(id: tweet.id, success: { (tweet: Tweet) -> () in
+                self.likedCount = self.likedCount - 1
+                self.favoritesCountLabel.text = "\(self.likedCount)"
+                }, failure: { (error: Error) -> () in
+                    print(error.localizedDescription)
+            })
+        }
+    }
     
+}
 
+extension TweetDetailsViewController {
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let navigationController = segue.destination as! UINavigationController
+        
+        if (navigationController.restorationIdentifier == "composeNavigation") {
+            let vc = navigationController.topViewController as! ComposeTweetViewController
+            vc.user = user
+            vc.delegate = self
+            vc.startingText = "@\(tweet.screenname!) "
+        }
+    }
+    
+}
+
+
+extension TweetDetailsViewController: ComposeTweetDelegate {
+    
+    func sendTweet(sender: ComposeTweetViewController, tweet: String) {
+        dismiss(animated: true, completion: nil)
+        postTweet(tweet: tweet)
+    }
+    
+    func postTweet(tweet: String) {
+        TwitterClient.sharedInstance?.postStatus(tweet: tweet, reply_id: self.tweet.id, success: { (tweet: Tweet) -> () in
+            }, failure: { (error: Error) -> () in
+                print(error.localizedDescription)
+        })
+    }
+    
 }

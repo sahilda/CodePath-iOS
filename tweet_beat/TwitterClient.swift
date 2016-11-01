@@ -16,10 +16,67 @@ class TwitterClient: BDBOAuth1SessionManager {
     var loginSuccess: (() -> ())?
     var loginFailure: ((Error) -> ())?
     
-    func postStatus(tweet: String, success: @escaping (Tweet) -> (), failure: @escaping (Error) -> ()) {
+    
+    func destroyRetweet(id: Int, success: @escaping (Tweet) -> (), failure: @escaping (Error) -> ()) {
+        
+        let endpoint = "1.1/statuses/unretweet/\(id).json"
+        
+        post(endpoint, parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) -> Void in
+            let dictionary = response as! NSDictionary
+            let tweet = Tweet(dictionary: dictionary)
+            success(tweet)
+            }, failure: { (task: URLSessionDataTask?, error: Error) in
+                failure(error)
+        })
+    }
+    
+    func createRetweet(id: Int, success: @escaping (Tweet) -> (), failure: @escaping (Error) -> ()) {
+        
+        let endpoint = "1.1/statuses/retweet/\(id).json"
+        
+        post(endpoint, parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) -> Void in
+            let dictionary = response as! NSDictionary
+            let tweet = Tweet(dictionary: dictionary)
+            success(tweet)
+            }, failure: { (task: URLSessionDataTask?, error: Error) in
+                failure(error)
+        })
+    }
+    
+    func destroyFavorite(id: Int, success: @escaping (Tweet) -> (), failure: @escaping (Error) -> ()) {
+        
+        let endpoint = "1.1/favorites/destroy.json?id=\(id)"
+        
+        post(endpoint, parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) -> Void in
+            let dictionary = response as! NSDictionary
+            let tweet = Tweet(dictionary: dictionary)
+            success(tweet)
+            }, failure: { (task: URLSessionDataTask?, error: Error) in
+                failure(error)
+        })
+    }
+    
+    func createFavorite(id: Int, success: @escaping (Tweet) -> (), failure: @escaping (Error) -> ()) {
+        
+        let endpoint = "1.1/favorites/create.json?id=\(id)"
+        
+        post(endpoint, parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) -> Void in
+            let dictionary = response as! NSDictionary
+            let tweet = Tweet(dictionary: dictionary)
+            success(tweet)
+            }, failure: { (task: URLSessionDataTask?, error: Error) in
+                failure(error)
+        })
+    }
+    
+    func postStatus(tweet: String, reply_id: Int? = nil, success: @escaping (Tweet) -> (), failure: @escaping (Error) -> ()) {
         
         let tweet_encoded = tweet.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
-        let endpoint = "1.1/statuses/update.json?status=\(tweet_encoded!)"
+        var endpoint = "1.1/statuses/update.json?status=\(tweet_encoded!)"
+        
+        if reply_id != nil {
+            endpoint = "1.1/statuses/update.json?in_reply_to_status_id=\(reply_id!)&status=\(tweet_encoded!)"
+        }
         
         post(endpoint, parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) -> Void in
                 let dictionary = response as! NSDictionary
