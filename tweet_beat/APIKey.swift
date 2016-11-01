@@ -9,5 +9,6 @@
 import UIKit
 
 class APIKey: NSObject {
-
+    static var CONSUMER_KEY = "INSERT HERE"
+    static var CONSUMER_SECRET = "INSERT HERE"
 }

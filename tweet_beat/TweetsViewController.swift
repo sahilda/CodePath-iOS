@@ -15,6 +15,7 @@ class TweetsViewController: UIViewController {
     var tweets: [Tweet]!
     var user: User!
     var isMoreDataLoading = false
+    var leastID = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +29,7 @@ class TweetsViewController: UIViewController {
     func getTweets(refreshControl: UIRefreshControl? = nil) {
         TwitterClient.sharedInstance?.homeTimeline(success: { (tweets: [Tweet]) -> () in
             self.tweets = tweets
-            
+            self.leastID = self.getLeastID(tweets: self.tweets)
             if (refreshControl != nil) {
                 refreshControl?.endRefreshing()
             }
@@ -37,6 +38,16 @@ class TweetsViewController: UIViewController {
             }, failure: { (error: Error) -> () in
                 print(error.localizedDescription)
         })
+    }
+    
+    func getLeastID(tweets: [Tweet]) -> Int {
+        var leastID: Int?
+        for tweet in tweets {
+            if (leastID == nil || (tweet.id < leastID!)) {
+                leastID = tweet.id
+            }
+        }
+        return leastID!
     }
     
     func loadTableViewDefaults() {
@@ -165,11 +176,11 @@ extension TweetsViewController {
 extension TweetsViewController {
     
     func getMoreTweets() {
-        TwitterClient.sharedInstance?.homeTimeline(success: { (tweets: [Tweet]) -> () in
+        TwitterClient.sharedInstance?.getMoreTimeline(id: leastID, success: { (tweets: [Tweet]) -> () in
             self.tweets = self.tweets + tweets
+            self.leastID = self.getLeastID(tweets: tweets)
             self.isMoreDataLoading = false
-            self.tableView.reloadData()
-            
+            self.tableView.reloadData()            
         }, failure: { (error: Error) -> () in
             print(error.localizedDescription)
         })
