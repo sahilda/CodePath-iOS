@@ -32,7 +32,7 @@ The following **additional** features are implemented:
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
 1. How to use make the text more with the tweet body more interactive - hyperlinks and #hashtags
-2. How to organize code better
+2. How to add a segue from a button within the cell (is it even possible via storyboard?).
 
 ## Video Walkthrough
 
