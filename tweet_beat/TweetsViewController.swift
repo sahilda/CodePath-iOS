@@ -70,6 +70,16 @@ class TweetsViewController: UIViewController {
                 print(error.localizedDescription)
         })
     }
+    
+    @IBAction func onMenuButton(_ sender: AnyObject) {
+        if hamburgerVC.menuOpen == true {
+            hamburgerVC.leftMarginConstraint.constant = 0
+            hamburgerVC.menuOpen = false
+        } else {
+            hamburgerVC.leftMarginConstraint.constant = hamburgerVC.view.frame.size.width - hamburgerVC.maxSize
+            hamburgerVC.menuOpen = true
+        }
+    }
 
 }
 

@@ -15,6 +15,8 @@ class HamburgerViewController: UIViewController {
     @IBOutlet weak var menuView: UIView!
     
     var originalLeftMarginConstraint: CGFloat!
+    var menuOpen = false
+    let maxSize: CGFloat = 125
     
     var menuViewController: UIViewController! {
         didSet {
@@ -53,7 +55,6 @@ class HamburgerViewController: UIViewController {
     @IBAction func onPanGesture(_ sender: UIPanGestureRecognizer) {
         let translation = sender.translation(in: view)
         let velocity = sender.velocity(in: view)
-        let maxSize: CGFloat = 125
         
         if sender.state == .began {
             originalLeftMarginConstraint = leftMarginConstraint.constant
@@ -72,9 +73,11 @@ class HamburgerViewController: UIViewController {
         } else if sender.state == .ended {
             UIView.animate(withDuration: 0.3, animations: ({
                 if velocity.x > 0 {
-                    self.leftMarginConstraint.constant = self.view.frame.size.width - maxSize
+                    self.leftMarginConstraint.constant = self.view.frame.size.width - self.maxSize
+                    self.menuOpen = true
                 } else {
                     self.leftMarginConstraint.constant = 0
+                    self.menuOpen = false
                 }
                 self.view.layoutIfNeeded()                
             }))

@@ -16,6 +16,7 @@
 		6F3E7C381DD020B3007AA17E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3E7C371DD020B3007AA17E /* ProfileViewController.swift */; };
 		6F862D221DD10878002F4965 /* FirstMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F862D211DD10878002F4965 /* FirstMenuTableViewCell.swift */; };
 		6F862D241DD114E4002F4965 /* MentionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F862D231DD114E4002F4965 /* MentionsViewController.swift */; };
+		6F862D261DD11617002F4965 /* MentionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F862D251DD11617002F4965 /* MentionsCell.swift */; };
 		6FC3E7B71DCEF6590052936F /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC3E7B61DCEF6590052936F /* MenuViewController.swift */; };
 		6FD593441DC441AC001254E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD593431DC441AC001254E3 /* AppDelegate.swift */; };
 		6FD593491DC441AC001254E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6FD593471DC441AC001254E3 /* Main.storyboard */; };
@@ -43,6 +44,7 @@
 		6F3E7C371DD020B3007AA17E /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		6F862D211DD10878002F4965 /* FirstMenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstMenuTableViewCell.swift; sourceTree = "<group>"; };
 		6F862D231DD114E4002F4965 /* MentionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MentionsViewController.swift; sourceTree = "<group>"; };
+		6F862D251DD11617002F4965 /* MentionsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MentionsCell.swift; sourceTree = "<group>"; };
 		6FC3E7B61DCEF6590052936F /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		6FD593401DC441AC001254E3 /* tweet_beat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tweet_beat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FD593431DC441AC001254E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 				6F3E7C321DCF0633007AA17E /* MenuTableViewCell.swift */,
 				6F2CE83F1DD045D900434EFB /* ProfileTweetCell.swift */,
 				6F862D211DD10878002F4965 /* FirstMenuTableViewCell.swift */,
+				6F862D251DD11617002F4965 /* MentionsCell.swift */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 				6FF572C61DC807BE003751AF /* TweetDetailsViewController.swift in Sources */,
 				6F862D221DD10878002F4965 /* FirstMenuTableViewCell.swift in Sources */,
 				6F08DE821DC83B1D00F6944F /* APIKey.swift in Sources */,
+				6F862D261DD11617002F4965 /* MentionsCell.swift in Sources */,
 				6F3E7C361DCFBCB4007AA17E /* HamburgerMenuLoader.swift in Sources */,
 				6FD593441DC441AC001254E3 /* AppDelegate.swift in Sources */,
 				6F3E7C331DCF0633007AA17E /* MenuTableViewCell.swift in Sources */,

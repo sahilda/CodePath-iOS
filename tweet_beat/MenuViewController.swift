@@ -31,8 +31,13 @@ class MenuViewController: UIViewController {
         profileVC.user = User.currentUser
         profileVC.hamburgerVC = hamburgerViewController
         
+        let mentionsNavigation = storyBoard.instantiateViewController(withIdentifier: "MentionsNavigationController") as! UINavigationController
+        let mentionsVC = mentionsNavigation.topViewController as! MentionsViewController
+        mentionsVC.hamburgerVC = hamburgerViewController
+        
         viewControllers.append(profileVC)
         viewControllers.append(timelineNavigationController)
+        viewControllers.append(mentionsNavigation)
         hamburgerViewController.contentViewController = timelineNavigationController
     }
     

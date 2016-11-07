@@ -36,8 +36,8 @@ The following **additional** features are implemented:
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-  1. What's the proper way to move through different view controllers
-  2.
+  1. What's the proper way to move through different view controllers and how I can get rid of this error: "Presenting view controllers on detached view controllers is discouraged".
+  2. How to reuse cells through different view controllers?
 
 ## Video Walkthrough
 
