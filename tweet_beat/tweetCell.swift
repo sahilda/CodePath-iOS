@@ -22,6 +22,15 @@ class tweetCell: UITableViewCell {
     @IBOutlet weak var replyButton: UIButton!
     @IBOutlet weak var tweetTextView: UITextView!
     
+    func loadData() {
+        avatorImageView.setImageWith(tweet.profileURL!)
+        nameLabel.text = tweet.name
+        usernameLabel.text = "@\(tweet.screenname!)"
+        dateLabel.text = tweet.timeback
+        tweetTextView.text = tweet.text
+        tweetId = tweet.id
+    }
+    
     @IBAction func retweetButtonPressed(_ sender: AnyObject) {
         
         if (!retweetButton.isSelected) {

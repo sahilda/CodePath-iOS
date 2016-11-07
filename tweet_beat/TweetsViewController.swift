@@ -27,7 +27,6 @@ class TweetsViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         getTweets()
-        tableView.reloadData()
     }
     
     func loadTableViewDefaults() {
@@ -55,7 +54,6 @@ class TweetsViewController: UIViewController {
     
     func refreshControlAction(refreshControl: UIRefreshControl) {
         getTweets(refreshControl: refreshControl)
-        tableView.reloadData()
     }
     
     @IBAction func onLogoutButton(_ sender: AnyObject) {
@@ -69,7 +67,6 @@ class TweetsViewController: UIViewController {
             if (refreshControl != nil) {
                 refreshControl?.endRefreshing()
             }
-            
             self.tableView.reloadData()
             }, failure: { (error: Error) -> () in
                 print(error.localizedDescription)
@@ -77,6 +74,8 @@ class TweetsViewController: UIViewController {
     }
 
 }
+
+// MARK: table view functions
 
 extension TweetsViewController: UITableViewDelegate, UITableViewDataSource {
     
@@ -91,13 +90,8 @@ extension TweetsViewController: UITableViewDelegate, UITableViewDataSource {
         let tweet = tweets[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "tweetCell", for: indexPath) as! tweetCell
         
-        cell.avatorImageView.setImageWith(tweet.profileURL!)
-        cell.nameLabel.text = tweet.name
-        cell.usernameLabel.text = "@\(tweet.screenname!)"
-        cell.dateLabel.text = tweet.timeback
-        cell.tweetTextView.text = tweet.text
-        cell.tweetId = tweet.id
         cell.tweet = tweet
+        cell.loadData()
         
         let retweeted = tweet.retweeted
         let liked = tweet.favorited
@@ -123,7 +117,7 @@ extension TweetsViewController: UITableViewDelegate, UITableViewDataSource {
     
 }
 
-// MARK segue code
+// MARK: segue code
 
 extension TweetsViewController {
     
@@ -173,7 +167,6 @@ extension TweetsViewController {
         return leastID!
     }
     
-    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if (!isMoreDataLoading) {
             // Calculate the position of one screen length before the bottom of the results
@@ -182,7 +175,6 @@ extension TweetsViewController {
             // When the user has scrolled past the threshold, start requesting
             if(scrollView.contentOffset.y > scrollOffsetThreshold && tableView.isDragging) {
                 isMoreDataLoading = true
-                // Code to load more results
                 getMoreTweets()
             }
         }

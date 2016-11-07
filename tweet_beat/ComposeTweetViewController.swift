@@ -60,13 +60,12 @@ class ComposeTweetViewController: UIViewController, UITextViewDelegate {
     @IBAction func tweetButton(_ sender: AnyObject) {
         if(validTweet()) {
             postTweet(tweet: textView.text)
-            dismiss(animated: true, completion: nil)
         }
     }
     
     func validTweet() -> Bool {
         if (textView.text.characters.count > 140) {
-            let alertController = UIAlertController(title: "Error", message: "Tweet is too large - must be 140 characters or less.", preferredStyle: .alert)
+            let alertController = UIAlertController(title: "Error", message: "Tweet is too long - gotta be 140 characters or less.", preferredStyle: .alert)
             let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in }
             alertController.addAction(OKAction)
             present(alertController, animated: true) { }

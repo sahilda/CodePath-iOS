@@ -81,6 +81,7 @@
 		6F3E7C341DCFBC96007AA17E /* views */ = {
 			isa = PBXGroup;
 			children = (
+				6FF572C11DC7FD20003751AF /* TwitterBlueColor.swift */,
 				6F3E7C351DCFBCB4007AA17E /* HamburgerMenuLoader.swift */,
 			);
 			name = views;
@@ -149,7 +150,6 @@
 				6FF572B71DC57B51003751AF /* Tweet.swift */,
 				6FF572BD1DC7E29E003751AF /* tweetCell.swift */,
 				6FF572BF1DC7ECE7003751AF /* SimpleDateFormatter.swift */,
-				6FF572C11DC7FD20003751AF /* TwitterBlueColor.swift */,
 				6F3E7C321DCF0633007AA17E /* MenuTableViewCell.swift */,
 			);
 			name = models;
