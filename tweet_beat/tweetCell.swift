@@ -11,15 +11,16 @@ import UIKit
 class tweetCell: UITableViewCell {
     
     var tweetId: Int = 0
+    var tweet: Tweet!
 
     @IBOutlet weak var avatorImageView: UIImageView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var tweetLabel: UILabel!
     @IBOutlet weak var retweetButton: UIButton!
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var replyButton: UIButton!
+    @IBOutlet weak var tweetTextView: UITextView!
     
     @IBAction func retweetButtonPressed(_ sender: AnyObject) {
         

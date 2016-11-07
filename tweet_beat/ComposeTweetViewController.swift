@@ -11,12 +11,8 @@ import UIKit
 class ComposeTweetViewController: UIViewController, UITextViewDelegate {
     
     var user: User!
-    var name: String!
-    var screenname: String!
-    var avatorURL: URL!
-    var tweetCharacterCount = 140
     var startingText: String?
-    weak var delegate: ComposeTweetDelegate?
+    var reply_id: Int? = nil
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var screennameLabel: UILabel!
@@ -26,25 +22,25 @@ class ComposeTweetViewController: UIViewController, UITextViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         loadNavigationBar()
         loadData()
         loadTextView()
     }
     
     func loadData() {
-        avatorURL = user.profileURL!
-        name = user.name!
-        screenname = "@\(user.screenname!)"
-        nameLabel.text = name
-        screennameLabel.text = screenname
-        avatorImageView.setImageWith(avatorURL)
+        nameLabel.text = user.name!
+        screennameLabel.text = "@\(user.screenname!)"
+        avatorImageView.setImageWith(user.profileURL!)
+        if startingText != nil {
+            textView.text = startingText
+        } else {
+            textView.text = nil
+        }
+        characterCountLabel.text = "\(140 - textView.text.characters.count)"
     }
     
     func loadTextView() {
         textView.delegate = self
-        textView.text = "Compose your tweet! Touch here."
         textView.becomeFirstResponder()
     }
 
@@ -57,26 +53,19 @@ class ComposeTweetViewController: UIViewController, UITextViewDelegate {
         self.navigationItem.titleView = imageView
     }
     
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        textView.text = nil
-        if startingText != nil {
-            textView.text = startingText
-        }
-    }
-    
     func textViewDidChange(_ textView: UITextView) {
-        tweetCharacterCount = textView.text.characters.count
-        characterCountLabel.text = "\(140 - tweetCharacterCount)"
+        characterCountLabel.text = "\(140 - textView.text.characters.count)"
     }
     
     @IBAction func tweetButton(_ sender: AnyObject) {
-        if(postTweet()) {
-            delegate?.sendTweet(sender: self, tweet: textView.text)
+        if(validTweet()) {
+            postTweet(tweet: textView.text)
+            dismiss(animated: true, completion: nil)
         }
     }
     
-    func postTweet() -> Bool {
-        if (tweetCharacterCount > 140) {
+    func validTweet() -> Bool {
+        if (textView.text.characters.count > 140) {
             let alertController = UIAlertController(title: "Error", message: "Tweet is too large - must be 140 characters or less.", preferredStyle: .alert)
             let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in }
             alertController.addAction(OKAction)
@@ -87,11 +76,14 @@ class ComposeTweetViewController: UIViewController, UITextViewDelegate {
     }
     
     @IBAction func cancelButton(_ sender: AnyObject) {
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func postTweet(tweet: String) {
+        TwitterClient.sharedInstance?.postStatus(tweet: tweet, reply_id: reply_id, success: { (tweet: Tweet) -> () in
+            }, failure: { (error: Error) -> () in
+                print(error.localizedDescription)
+        })
     }
 
-}
-
-protocol ComposeTweetDelegate: class {
-    func sendTweet(sender: ComposeTweetViewController, tweet: String)
 }

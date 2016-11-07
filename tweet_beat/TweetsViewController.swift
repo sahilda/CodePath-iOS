@@ -13,7 +13,7 @@ class TweetsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var tweets: [Tweet]!
-    var user: User!
+    var user = User.currentUser!
     var isMoreDataLoading = false
     var leastID = 0
     
@@ -23,31 +23,11 @@ class TweetsViewController: UIViewController {
         loadNavigationBar()
         loadRefreshControl()
         getTweets()
-        user = User.currentUser!
     }
     
-    func getTweets(refreshControl: UIRefreshControl? = nil) {
-        TwitterClient.sharedInstance?.homeTimeline(success: { (tweets: [Tweet]) -> () in
-            self.tweets = tweets
-            self.leastID = self.getLeastID(tweets: self.tweets)
-            if (refreshControl != nil) {
-                refreshControl?.endRefreshing()
-            }
-            
-            self.tableView.reloadData()
-            }, failure: { (error: Error) -> () in
-                print(error.localizedDescription)
-        })
-    }
-    
-    func getLeastID(tweets: [Tweet]) -> Int {
-        var leastID: Int?
-        for tweet in tweets {
-            if (leastID == nil || (tweet.id < leastID!)) {
-                leastID = tweet.id
-            }
-        }
-        return leastID!
+    override func viewDidAppear(_ animated: Bool) {
+        getTweets()
+        tableView.reloadData()
     }
     
     func loadTableViewDefaults() {
@@ -81,23 +61,21 @@ class TweetsViewController: UIViewController {
     @IBAction func onLogoutButton(_ sender: AnyObject) {
         TwitterClient.sharedInstance?.logout()
     }
-
-}
-
-extension TweetsViewController: ComposeTweetDelegate {
     
-    func sendTweet(sender: ComposeTweetViewController, tweet: String) {
-        dismiss(animated: true, completion: nil)
-        postTweet(tweet: tweet)
-    }
-    
-    func postTweet(tweet: String) {
-        TwitterClient.sharedInstance?.postStatus(tweet: tweet, reply_id: nil, success: { (tweet: Tweet) -> () in
-        }, failure: { (error: Error) -> () in
-            print(error.localizedDescription)
+    func getTweets(refreshControl: UIRefreshControl? = nil) {
+        TwitterClient.sharedInstance?.homeTimeline(success: { (tweets: [Tweet]) -> () in
+            self.tweets = tweets
+            self.leastID = self.getLeastID(tweets: self.tweets)
+            if (refreshControl != nil) {
+                refreshControl?.endRefreshing()
+            }
+            
+            self.tableView.reloadData()
+            }, failure: { (error: Error) -> () in
+                print(error.localizedDescription)
         })
     }
-    
+
 }
 
 extension TweetsViewController: UITableViewDelegate, UITableViewDataSource {
@@ -117,8 +95,9 @@ extension TweetsViewController: UITableViewDelegate, UITableViewDataSource {
         cell.nameLabel.text = tweet.name
         cell.usernameLabel.text = "@\(tweet.screenname!)"
         cell.dateLabel.text = tweet.timeback
-        cell.tweetLabel.text = tweet.text
+        cell.tweetTextView.text = tweet.text
         cell.tweetId = tweet.id
+        cell.tweet = tweet
         
         let retweeted = tweet.retweeted
         let liked = tweet.favorited
@@ -144,6 +123,8 @@ extension TweetsViewController: UITableViewDelegate, UITableViewDataSource {
     
 }
 
+// MARK segue code
+
 extension TweetsViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -153,7 +134,6 @@ extension TweetsViewController {
         if (navigationController.restorationIdentifier == "composeNavigation") {
             let vc = navigationController.topViewController as! ComposeTweetViewController
             vc.user = user
-            vc.delegate = self
         }
         
         if (navigationController.restorationIdentifier == "detailsNavigation") {
@@ -166,12 +146,9 @@ extension TweetsViewController {
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        self.getTweets()
-        self.tableView.reloadData()
-    }
-    
 }
+
+// MARK: Never ending scrolling code
 
 extension TweetsViewController {
     
@@ -184,6 +161,16 @@ extension TweetsViewController {
         }, failure: { (error: Error) -> () in
             print(error.localizedDescription)
         })
+    }
+    
+    func getLeastID(tweets: [Tweet]) -> Int {
+        var leastID: Int?
+        for tweet in tweets {
+            if (leastID == nil || (tweet.id < leastID!)) {
+                leastID = tweet.id
+            }
+        }
+        return leastID!
     }
     
     

@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		63D6A90C47848408840E60C4 /* Pods_tweet_beat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DE0E3CDC10C57E98774E676 /* Pods_tweet_beat.framework */; };
 		6F08DE821DC83B1D00F6944F /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F08DE811DC83B1D00F6944F /* APIKey.swift */; };
+		6F3E7C311DCEFDC8007AA17E /* HamburgerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3E7C301DCEFDC8007AA17E /* HamburgerViewController.swift */; };
+		6F3E7C331DCF0633007AA17E /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3E7C321DCF0633007AA17E /* MenuTableViewCell.swift */; };
+		6F3E7C361DCFBCB4007AA17E /* HamburgerMenuLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3E7C351DCFBCB4007AA17E /* HamburgerMenuLoader.swift */; };
+		6FC3E7B71DCEF6590052936F /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC3E7B61DCEF6590052936F /* MenuViewController.swift */; };
 		6FD593441DC441AC001254E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD593431DC441AC001254E3 /* AppDelegate.swift */; };
 		6FD593491DC441AC001254E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6FD593471DC441AC001254E3 /* Main.storyboard */; };
 		6FD5934B1DC441AC001254E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6FD5934A1DC441AC001254E3 /* Assets.xcassets */; };
@@ -29,6 +33,10 @@
 		151393FE6B7CBCAA0A73A8BE /* Pods-tweet_beat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tweet_beat.release.xcconfig"; path = "Pods/Target Support Files/Pods-tweet_beat/Pods-tweet_beat.release.xcconfig"; sourceTree = "<group>"; };
 		4DE0E3CDC10C57E98774E676 /* Pods_tweet_beat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tweet_beat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F08DE811DC83B1D00F6944F /* APIKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		6F3E7C301DCEFDC8007AA17E /* HamburgerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HamburgerViewController.swift; sourceTree = "<group>"; };
+		6F3E7C321DCF0633007AA17E /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
+		6F3E7C351DCFBCB4007AA17E /* HamburgerMenuLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HamburgerMenuLoader.swift; sourceTree = "<group>"; };
+		6FC3E7B61DCEF6590052936F /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		6FD593401DC441AC001254E3 /* tweet_beat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tweet_beat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FD593431DC441AC001254E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6FD593481DC441AC001254E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -70,6 +78,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		6F3E7C341DCFBC96007AA17E /* views */ = {
+			isa = PBXGroup;
+			children = (
+				6F3E7C351DCFBCB4007AA17E /* HamburgerMenuLoader.swift */,
+			);
+			name = views;
+			sourceTree = "<group>";
+		};
 		6F8650B983EE9995EF76E55F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +115,7 @@
 		6FD593421DC441AC001254E3 /* tweet_beat */ = {
 			isa = PBXGroup;
 			children = (
+				6F3E7C341DCFBC96007AA17E /* views */,
 				6FF572B41DC57AA0003751AF /* APIs */,
 				6FF572B31DC57A94003751AF /* models */,
 				6FF572AF1DC444B0003751AF /* view controllers */,
@@ -119,6 +136,8 @@
 				6FF572BB1DC6C3AC003751AF /* TweetsViewController.swift */,
 				6FF572C31DC807B0003751AF /* ComposeTweetViewController.swift */,
 				6FF572C51DC807BE003751AF /* TweetDetailsViewController.swift */,
+				6FC3E7B61DCEF6590052936F /* MenuViewController.swift */,
+				6F3E7C301DCEFDC8007AA17E /* HamburgerViewController.swift */,
 			);
 			name = "view controllers";
 			sourceTree = "<group>";
@@ -131,6 +150,7 @@
 				6FF572BD1DC7E29E003751AF /* tweetCell.swift */,
 				6FF572BF1DC7ECE7003751AF /* SimpleDateFormatter.swift */,
 				6FF572C11DC7FD20003751AF /* TwitterBlueColor.swift */,
+				6F3E7C321DCF0633007AA17E /* MenuTableViewCell.swift */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -276,15 +296,19 @@
 				6FF572B61DC57B40003751AF /* User.swift in Sources */,
 				6FF572C21DC7FD20003751AF /* TwitterBlueColor.swift in Sources */,
 				6FF572B81DC57B51003751AF /* Tweet.swift in Sources */,
+				6F3E7C311DCEFDC8007AA17E /* HamburgerViewController.swift in Sources */,
 				6FF572AE1DC443A7003751AF /* LoginViewController.swift in Sources */,
 				6FF572BE1DC7E29E003751AF /* tweetCell.swift in Sources */,
 				6FF572C01DC7ECE7003751AF /* SimpleDateFormatter.swift in Sources */,
 				6FF572BC1DC6C3AC003751AF /* TweetsViewController.swift in Sources */,
+				6FC3E7B71DCEF6590052936F /* MenuViewController.swift in Sources */,
 				6FF572BA1DC6B52E003751AF /* TwitterClient.swift in Sources */,
 				6FF572C41DC807B0003751AF /* ComposeTweetViewController.swift in Sources */,
 				6FF572C61DC807BE003751AF /* TweetDetailsViewController.swift in Sources */,
 				6F08DE821DC83B1D00F6944F /* APIKey.swift in Sources */,
+				6F3E7C361DCFBCB4007AA17E /* HamburgerMenuLoader.swift in Sources */,
 				6FD593441DC441AC001254E3 /* AppDelegate.swift in Sources */,
+				6F3E7C331DCF0633007AA17E /* MenuTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,6 +352,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -377,6 +402,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

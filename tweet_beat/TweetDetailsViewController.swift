@@ -18,7 +18,6 @@ class TweetDetailsViewController: UIViewController {
     var retweetedCount = 0
     
     @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var tweetLabel: UILabel!
     @IBOutlet weak var avatorImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
@@ -27,6 +26,7 @@ class TweetDetailsViewController: UIViewController {
     @IBOutlet weak var retweetButton: UIButton!
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var replyButton: UIButton!
+    @IBOutlet weak var tweetTextView: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,7 +48,7 @@ class TweetDetailsViewController: UIViewController {
     
     func loadTweetDate() {
         avatorImageView.setImageWith(tweet.profileURL!)
-        tweetLabel.text = tweet.text
+        tweetTextView.text = tweet.text        
         nameLabel.text = tweet.name
         usernameLabel.text = tweet.screenname
         dateLabel.text = tweet.timestamp
@@ -130,26 +130,10 @@ extension TweetDetailsViewController {
         if (navigationController.restorationIdentifier == "composeNavigation") {
             let vc = navigationController.topViewController as! ComposeTweetViewController
             vc.user = user
-            vc.delegate = self
+            vc.reply_id = tweet.id
             vc.startingText = "@\(tweet.screenname!) "
         }
     }
     
 }
 
-
-extension TweetDetailsViewController: ComposeTweetDelegate {
-    
-    func sendTweet(sender: ComposeTweetViewController, tweet: String) {
-        dismiss(animated: true, completion: nil)
-        postTweet(tweet: tweet)
-    }
-    
-    func postTweet(tweet: String) {
-        TwitterClient.sharedInstance?.postStatus(tweet: tweet, reply_id: self.tweet.id, success: { (tweet: Tweet) -> () in
-            }, failure: { (error: Error) -> () in
-                print(error.localizedDescription)
-        })
-    }
-    
-}

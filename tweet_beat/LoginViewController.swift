@@ -12,7 +12,6 @@ import AFNetworking
 
 class LoginViewController: UIViewController {
 
-    
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var twitterLogo: UIImageView!
     @IBOutlet weak var loginButton: UIButton!
@@ -24,15 +23,13 @@ class LoginViewController: UIViewController {
         twitterLogo.image = UIImage(named: "twitter_white_logo")
         loginButton.layer.cornerRadius = 6
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     @IBAction func onLoginButton(_ sender: AnyObject) {
         TwitterClient.sharedInstance?.login(success: { () -> () in
-            self.performSegue(withIdentifier: "loginSegue", sender: nil)
+      
+            let hamburgerViewController = HamburgerMenuLoader.loadHamburgetMenu()
+            self.present(hamburgerViewController, animated: true)
+            
         }, failure: { (error: Error) -> () in
             print("Error: \(error.localizedDescription)")
         })
