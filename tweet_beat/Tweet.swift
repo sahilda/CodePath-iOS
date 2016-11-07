@@ -44,7 +44,7 @@ class Tweet: NSObject {
             let formatter = DateFormatter()
             formatter.dateFormat = "EEE MMMM d HH:mm:ss Z y"
             let datetimestamp = formatter.date(from: timestampString)
-            timeback = SimpleDateFormatter.getTimeAgoSimple(date: datetimestamp!)
+            timeback = "⋅ \(SimpleDateFormatter.getTimeAgoSimple(date: datetimestamp!))"
             timestamp = SimpleDateFormatter.getTimestamp(date: datetimestamp!)
         }
     }

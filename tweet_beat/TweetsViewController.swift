@@ -17,6 +17,7 @@ class TweetsViewController: UIViewController {
     var isMoreDataLoading = false
     var leastID = 0
     var hamburgerVC: HamburgerViewController!
+    let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,10 +58,6 @@ class TweetsViewController: UIViewController {
         getTweets(refreshControl: refreshControl)
     }
     
-    @IBAction func onLogoutButton(_ sender: AnyObject) {
-        TwitterClient.sharedInstance?.logout()
-    }
-    
     func getTweets(refreshControl: UIRefreshControl? = nil) {
         TwitterClient.sharedInstance?.homeTimeline(success: { (tweets: [Tweet]) -> () in
             self.tweets = tweets
@@ -89,10 +86,13 @@ extension TweetsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let tweet = tweets[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "tweetCell", for: indexPath) as! tweetCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as! TweetCell
         
         cell.tweet = tweet
+        cell.hamburgerVC = hamburgerVC
         cell.loadData()
+        avatorTapGesture(target: cell.avatorImageView)
+        
         
         let retweeted = tweet.retweeted
         let liked = tweet.favorited
@@ -112,14 +112,31 @@ extension TweetsViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func avatorTapGesture(target: UIImageView) {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        target.addGestureRecognizer(tapGesture)
+    }
+    
+    func handleTap(sender: UITapGestureRecognizer) {
+        let location = sender.location(in: tableView)
+        let indexPath = tableView.indexPathForRow(at: location)
+        let tweet = tweets[(indexPath?.row)!]
+    
+        let profileVC = storyBoard.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
+        
+        profileVC.hamburgerVC = hamburgerVC
+        profileVC.screenname = tweet.screenname!
+        hamburgerVC.contentViewController = profileVC
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
         let tweet = tweets[indexPath.row]
-        let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
         let tweetDetailsNavigation = storyBoard.instantiateViewController(withIdentifier: "tweetDetailsNavigation") as! UINavigationController
         let tweetDetailsVC = tweetDetailsNavigation.topViewController as! TweetDetailsViewController
         tweetDetailsVC.tweet = tweet
+        tweetDetailsVC.user = user
         self.dismiss(animated: false, completion: nil)
         self.present(tweetDetailsNavigation, animated: true, completion: nil)
     }
@@ -136,15 +153,6 @@ extension TweetsViewController {
         
         if (navigationController.restorationIdentifier == "composeNavigation") {
             let vc = navigationController.topViewController as! ComposeTweetViewController
-            vc.user = user
-        }
-        
-        if (navigationController.restorationIdentifier == "detailsNavigation") {
-            let vc = navigationController.topViewController as! TweetDetailsViewController
-            let cell = sender as! UITableViewCell
-            let indexPath = tableView.indexPath(for: cell)
-            let tweet = tweets[(indexPath?.row)!]
-            vc.tweet = tweet
             vc.user = user
         }
     }

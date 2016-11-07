@@ -35,7 +35,7 @@ class SimpleDateFormatter: NSObject {
                 }
             }
         }
-        return "\(components.month!)\\\(components.day!)\\\(components.year!)"
+        return "\(components.month!)/\(components.day!)/\(components.year!)"
     }
     
     static func getTimestamp(date: Date) -> String {
@@ -51,7 +51,7 @@ class SimpleDateFormatter: NSObject {
             hour = 12
         }
         
-        return "\(components.month!)\\\(components.day!)\\\(components.year!), \(hour!):\(components.minute!) \(timeOfDay)"
+        return "\(components.month!)/\(components.day!)/\(components.year!), \(hour!):\(components.minute!) \(timeOfDay)"
     }
 }
 

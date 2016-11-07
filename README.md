@@ -6,15 +6,15 @@ Time spent: **X** hours spent in total
 
 The following **required** functionality is completed:
 
-- [ ] Hamburger menu
+- [x] Hamburger menu
    - [x] Dragging anywhere in the view should reveal the menu.
-   - [ ] The menu should include links to your profile, the home timeline, and the mentions view.
+   - [x] The menu should include links to your profile, the home timeline, and the mentions view.
    - [x] The menu can look similar to the example or feel free to take liberty with the UI.
-- [ ] Profile page
-   - [ ] Contains the user header view
-   - [ ] Contains a section with the users basic stats: # tweets, # following, # followers
-- [ ] Home Timeline
-   - [ ] Tapping on a user image should bring up that user's profile page
+- [x] Profile page
+   - [x] Contains the user header view
+   - [x] Contains a section with the users basic stats: # tweets, # following, # followers
+- [x] Home Timeline
+   - [x] Tapping on a user image should bring up that user's profile page
 
 The following **optional** features are implemented:
 
@@ -32,10 +32,11 @@ The following **additional** features are implemented:
 
 - [x] Added hyperlinks to the the tweet links for urls
 - [x] Animated login page with a moving background, and an enlarged bird upon successful login
+- [x] Changed status bar info (battery, carrier, time) to white
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-  1.
+  1. What's the proper way to move through different view controllers
   2.
 
 ## Video Walkthrough
@@ -45,10 +46,6 @@ Here's a walkthrough of implemented user stories:
 <img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
-
-## Notes
-
-Describe any challenges encountered while building the app.
 
 # Project 3 - Tweet Beat
 
@@ -94,25 +91,25 @@ Here's a walkthrough of implemented user stories:
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
-## Notes
+# Notes
 
-Describe any challenges encountered while building the app.
 * Homescreen background image was found [here](http://www.araspot.com/wp-content/uploads/2015/09/san-francisco-california-wallpaper-photos-gallery-9aph750cpi.jpg).
 * Twitter assets were found [here](https://brand.twitter.com/en.html) and [here](https://webcache.googleusercontent.com/search?q=cache:0V23ETjL0xIJ:https://dev.twitter.com/overview/general/image-resources+&cd=2&hl=en&ct=clnk&gl=us).
-* Compose icone was found here [here](https://www.iconfinder.com/icons/897241/article_blog_blogging_compose_resolutions_sign_write_icon#size=128).
+* Compose, Home, Mentions, and Logout icons were found here [here](https://www.iconfinder.com/icons/897241/article_blog_blogging_compose_resolutions_sign_write_icon#size=128).
+* Menu and Speech Bubble icons were found [here](https://icons8.com/web-app/for/all/message).
 
-## License
+# License
 
-    Copyright 2016 Sahil Agarwal
+  Copyright 2016 Sahil Agarwal
 
-    Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
 
-        http://www.apache.org/licenses/LICENSE-2.0
+      http://www.apache.org/licenses/LICENSE-2.0
 
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.

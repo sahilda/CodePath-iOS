@@ -1,18 +1,18 @@
 //
-//  tweetCell.swift
+//  ProfileTweetCell.swift
 //  tweet_beat
 //
-//  Created by Sahil Agarwal on 10/31/16.
+//  Created by Sahil Agarwal on 11/6/16.
 //  Copyright © 2016 Sahil Agarwal. All rights reserved.
 //
 
 import UIKit
 
-class tweetCell: UITableViewCell {
-    
+class ProfileTweetCell: UITableViewCell {
+
     var tweetId: Int = 0
     var tweet: Tweet!
-
+    
     @IBOutlet weak var avatorImageView: UIImageView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
@@ -24,6 +24,8 @@ class tweetCell: UITableViewCell {
     
     func loadData() {
         avatorImageView.setImageWith(tweet.profileURL!)
+        avatorImageView.layer.masksToBounds = true
+        avatorImageView.layer.cornerRadius = 7
         nameLabel.text = tweet.name
         usernameLabel.text = "@\(tweet.screenname!)"
         dateLabel.text = tweet.timeback
@@ -48,7 +50,7 @@ class tweetCell: UITableViewCell {
         }
         
     }
-
+    
     @IBAction func likedButtonPressed(_ sender: AnyObject) {
         
         if (!likeButton.isSelected) {
@@ -66,4 +68,5 @@ class tweetCell: UITableViewCell {
         }
         
     }
+
 }

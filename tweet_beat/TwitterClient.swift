@@ -16,7 +16,6 @@ class TwitterClient: BDBOAuth1SessionManager {
     var loginSuccess: (() -> ())?
     var loginFailure: ((Error) -> ())?
     
-    
     func destroyRetweet(id: Int, success: @escaping (Tweet) -> (), failure: @escaping (Error) -> ()) {
         
         let endpoint = "1.1/statuses/unretweet/\(id).json"
@@ -87,6 +86,26 @@ class TwitterClient: BDBOAuth1SessionManager {
         })
     }
     
+    func userMentions(success: @escaping ([Tweet]) -> (), failure: @escaping (Error) -> ()) {
+        get("1.1/statuses/mentions_timeline.json", parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) -> Void in
+            let dictionaries = response as! [NSDictionary]
+            let tweets = Tweet.tweetsWithArray(dictionaries: dictionaries)
+            success(tweets)
+            }, failure: { (task: URLSessionDataTask?, error: Error) in
+                failure(error)
+        })
+    }
+    
+    func userTimeline(screenname: String, success: @escaping ([Tweet]) -> (), failure: @escaping (Error) -> ()) {
+        get("1.1/statuses/user_timeline.json?screen_name=\(screenname)", parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) -> Void in
+            let dictionaries = response as! [NSDictionary]
+            let tweets = Tweet.tweetsWithArray(dictionaries: dictionaries)
+            success(tweets)
+            }, failure: { (task: URLSessionDataTask?, error: Error) in
+                failure(error)
+        })
+    }
+    
     func homeTimeline(success: @escaping ([Tweet]) -> (), failure: @escaping (Error) -> ()) {
         get("1.1/statuses/home_timeline.json", parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) -> Void in
                 let dictionaries = response as! [NSDictionary]
@@ -98,7 +117,6 @@ class TwitterClient: BDBOAuth1SessionManager {
     }
     
     func getMoreTimeline(id: Int, success: @escaping ([Tweet]) -> (), failure: @escaping (Error) -> ()) {
-        print("here")
         let endpoint = "1.1/statuses/home_timeline.json?max_id=\((id-1))"
         get(endpoint, parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) -> Void in
             let dictionaries = response as! [NSDictionary]
@@ -118,6 +136,31 @@ class TwitterClient: BDBOAuth1SessionManager {
                 failure(error)
         })
     }
+    
+    func getUser(screenname: String, success: @escaping (User) -> (), failure: @escaping (Error) -> ()) {
+        get("1.1/users/show.json?screen_name=\(screenname)", parameters: nil, progress: nil, success: {
+            (task: URLSessionDataTask, response: Any?) -> Void in
+                let userDictionary = response as! NSDictionary
+                let user = User.init(dictionary: userDictionary)
+                success(user)
+            }, failure: { (task: URLSessionDataTask?, error: Error) in
+                failure(error)
+        })
+    }
+    
+    func getAccountBannerUrl(screenname: String, success: @escaping (String) -> (), failure: @escaping (Error) -> ()) {
+        get("1.1/users/profile_banner.json?screen_name=\(screenname)", parameters: nil, progress: nil, success: {
+            (task: URLSessionDataTask, response: Any?) -> Void in
+                let dictionary = response as! NSDictionary
+                let sizes = dictionary["sizes"] as! NSDictionary
+                let mobile_retina = sizes["mobile_retina"] as! NSDictionary
+                let url = mobile_retina["url"] as! String
+                success(url)
+            }, failure: { (task: URLSessionDataTask?, error: Error) in
+                failure(error)
+        })
+    }
+    
     
     func login(success: @escaping () -> () , failure: @escaping (Error) -> () ) {
         loginSuccess = success

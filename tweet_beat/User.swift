@@ -9,24 +9,32 @@
 import UIKit
 
 class User: NSObject {
-    static let userDidLogoutNotification = "userDidLogout"
     
+    static let userDidLogoutNotification = "userDidLogout"
+    var dictionary: NSDictionary?
     var name: String?
     var screenname: String?
     var profileURL: URL?
     var tagline: String?
-    
-    var dictionary: NSDictionary?
+    var followers_count: Int?
+    var following: Int?
+    var location: String?
+    var tweet_count: Int?
     
     init(dictionary: NSDictionary) {
         self.dictionary = dictionary
+        
         name =  dictionary["name"] as? String
         screenname =  dictionary["screen_name"] as? String
         let profileURLString =  dictionary["profile_image_url_https"] as? String
         if let profileURLString = profileURLString {
             profileURL = URL(string: profileURLString)
-        }
+        }        
         tagline =  dictionary["description"] as? String
+        followers_count = dictionary["followers_count"] as? Int
+        following = dictionary["friends_count"] as? Int
+        location = dictionary["location"] as? String
+        tweet_count = dictionary["statuses_count"] as? Int
     }
     
     static var _currentUser: User?

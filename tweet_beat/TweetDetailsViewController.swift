@@ -48,6 +48,8 @@ class TweetDetailsViewController: UIViewController {
     
     func loadTweetDate() {
         avatorImageView.setImageWith(tweet.profileURL!)
+        avatorImageView.layer.masksToBounds = true
+        avatorImageView.layer.cornerRadius = 7        
         tweetTextView.text = tweet.text        
         nameLabel.text = tweet.name
         usernameLabel.text = tweet.screenname
@@ -120,20 +122,16 @@ class TweetDetailsViewController: UIViewController {
         }
     }
     
-}
-
-extension TweetDetailsViewController {
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let navigationController = segue.destination as! UINavigationController
-        
-        if (navigationController.restorationIdentifier == "composeNavigation") {
-            let vc = navigationController.topViewController as! ComposeTweetViewController
-            vc.user = user
-            vc.reply_id = tweet.id
-            vc.startingText = "@\(tweet.screenname!) "
-        }
+    @IBAction func replyButtonPressed(_ sender: AnyObject) {
+        let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
+        let composeNavigation = storyBoard.instantiateViewController(withIdentifier: "composeNavigation") as! UINavigationController
+        let composeVC = composeNavigation.topViewController as! ComposeTweetViewController
+        composeVC.user = user
+        composeVC.reply_id = tweet.id
+        composeVC.startingText = "@\(tweet.screenname!) "
+        self.present(composeNavigation, animated: true, completion: nil)
     }
     
 }
+
 
