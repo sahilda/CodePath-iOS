@@ -21,6 +21,10 @@ class MentionsViewController: UIViewController {
         getTweets()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        getTweets()
+    }
+    
     func loadNavigationBar() {
         navigationController?.navigationBar.barTintColor = TwitterBlueColor.getTwitterBlueColor()
         let logo = UIImage(named: "twitter_white_logo")

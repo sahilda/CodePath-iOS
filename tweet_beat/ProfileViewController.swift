@@ -42,6 +42,10 @@ class ProfileViewController: UIViewController {
         }
         
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        viewDidLoad()
+    }
 
     func loadData() {
         nameLabel.text = user.name

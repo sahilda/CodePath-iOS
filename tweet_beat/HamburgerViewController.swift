@@ -58,10 +58,9 @@ class HamburgerViewController: UIViewController {
         
         if sender.state == .began {
             originalLeftMarginConstraint = leftMarginConstraint.constant
+        
         } else if sender.state == .changed {
-            
             let maxTranslationX = self.view.frame.size.width - maxSize - leftMarginConstraint.constant
-            
             if ((leftMarginConstraint.constant + translation.x) < 0) {
                 leftMarginConstraint.constant = 0
             } else if (translation.x > maxTranslationX) {

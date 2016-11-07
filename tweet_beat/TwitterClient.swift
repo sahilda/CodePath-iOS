@@ -183,6 +183,14 @@ class TwitterClient: BDBOAuth1SessionManager {
             
                 self.currentAccount(success: {(user: User) -> () in
                     User.currentUser = user
+                    
+                    if User.userAlreadyLoggedIn(user: user) {
+                        // do nothing
+                    } else {
+                        User.loggedInUsers?.append(user)
+                    }
+                    
+                    
                     self.loginSuccess?()
                 }, failure: { (error: Error) -> () in
                     self.loginFailure?(error)
@@ -194,10 +202,20 @@ class TwitterClient: BDBOAuth1SessionManager {
     }
     
     func logout() {
-        User.currentUser = nil
+        User.removeLoggedInUser(user: User.currentUser!)
         deauthorize()
-        
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: User.userDidLogoutNotification), object: nil)
+        
+        /*
+        if User.loggedInUsers?.count == 0 {
+            deauthorize()
+            User.currentUser = nil
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: User.userDidLogoutNotification), object: nil)
+        } else {
+            User.currentUser = User.loggedInUsers?[0]
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: User.newUserNotification), object: nil)
+        }
+         */
     }
 
 }

@@ -1,6 +1,6 @@
 # Project 4 - Tweet Beat
 
-Time spent: **X** hours spent in total
+Time spent: 12 hours spent in total
 
 ## User Stories
 
@@ -23,7 +23,7 @@ The following **optional** features are implemented:
    - [ ] As the paging view moves, increase the opacity of the background screen. See the actual Twitter app for this effect
    - [ ] Pulling down the profile page should blur and resize the header image.
 - [ ] Account switching
-   - [ ] Long press on tab bar to bring up Account view with animation
+   - [x] Long press on tab bar to bring up Account view with animation
    - [ ] Tap account to switch to
    - [ ] Include a plus button to Add an Account
    - [ ] Swipe to delete an account
@@ -38,12 +38,13 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
   1. What's the proper way to move through different view controllers and how I can get rid of this error: "Presenting view controllers on detached view controllers is discouraged".
   2. How to reuse cells through different view controllers?
+  3. How to manage different accounts?
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://i.imgur.com/cNu5jLn.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
@@ -96,7 +97,7 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 * Homescreen background image was found [here](http://www.araspot.com/wp-content/uploads/2015/09/san-francisco-california-wallpaper-photos-gallery-9aph750cpi.jpg).
 * Twitter assets were found [here](https://brand.twitter.com/en.html) and [here](https://webcache.googleusercontent.com/search?q=cache:0V23ETjL0xIJ:https://dev.twitter.com/overview/general/image-resources+&cd=2&hl=en&ct=clnk&gl=us).
 * Compose, Home, Mentions, and Logout icons were found here [here](https://www.iconfinder.com/icons/897241/article_blog_blogging_compose_resolutions_sign_write_icon#size=128).
-* Menu and Speech Bubble icons were found [here](https://icons8.com/web-app/for/all/message).
+* Menu, Plus, and Speech Bubble icons were found [here](https://icons8.com/web-app/for/all/message).
 
 # License
 

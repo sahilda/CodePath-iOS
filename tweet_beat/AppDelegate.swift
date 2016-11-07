@@ -29,6 +29,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window?.rootViewController = vc
         })
         
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: User.newUserNotification), object: nil, queue: OperationQueue.main, using: {(notification: Notification) -> Void in
+            let hamburgerViewController = HamburgerMenuLoader.loadHamburgetMenu()
+            self.window?.rootViewController = hamburgerViewController
+        })
+        
         return true
     }
 
