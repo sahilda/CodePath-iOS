@@ -22,14 +22,12 @@ class MenuViewController: UIViewController {
         loadNavigationBar()
         
         let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
-        timelineViewController = storyBoard.instantiateViewController(withIdentifier: "TweetsNavigationController")
-        viewControllers.append(timelineViewController)
-        hamburgerViewController.contentViewController = timelineViewController
-    }
-    
-    func loadTableViewDefaults() {
-        tableView.delegate =  self
-        tableView.dataSource = self
+        let timelineNavigationController = storyBoard.instantiateViewController(withIdentifier: "TweetsNavigationController") as! UINavigationController
+        let timelineVC = timelineNavigationController.topViewController as! TweetsViewController
+        timelineVC.hamburgerVC = hamburgerViewController
+        
+        viewControllers.append(timelineNavigationController)
+        hamburgerViewController.contentViewController = timelineNavigationController
     }
     
     func loadNavigationBar() {
@@ -38,7 +36,14 @@ class MenuViewController: UIViewController {
     
 }
 
+// MARK: Functions for how the menu table view looks
+
 extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func loadTableViewDefaults() {
+        tableView.delegate =  self
+        tableView.dataSource = self
+    }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
@@ -53,7 +58,7 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MenuTableViewCell", for: indexPath) as! MenuTableViewCell
         
-        let titles = ["Home"]
+        let titles = ["Home", "Profile", "Mentions"]
         cell.titleLabel.text = titles[indexPath.row]
         return cell
     }

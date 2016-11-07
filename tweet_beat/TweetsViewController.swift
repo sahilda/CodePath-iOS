@@ -16,6 +16,7 @@ class TweetsViewController: UIViewController {
     var user = User.currentUser!
     var isMoreDataLoading = false
     var leastID = 0
+    var hamburgerVC: HamburgerViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -113,6 +114,14 @@ extension TweetsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        let tweet = tweets[indexPath.row]
+        let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
+        let tweetDetailsNavigation = storyBoard.instantiateViewController(withIdentifier: "tweetDetailsNavigation") as! UINavigationController
+        let tweetDetailsVC = tweetDetailsNavigation.topViewController as! TweetDetailsViewController
+        tweetDetailsVC.tweet = tweet
+        self.dismiss(animated: false, completion: nil)
+        self.present(tweetDetailsNavigation, animated: true, completion: nil)
     }
     
 }

@@ -54,13 +54,14 @@
                     </view>
                     <connections>
                         <outlet property="imageView" destination="XFN-cv-m2l" id="L5F-2s-Zb9"/>
+                        <outlet property="imageViewTrailingConstraint" destination="UGB-Rv-O4j" id="d3N-ky-rIF"/>
                         <outlet property="loginButton" destination="8Bx-pp-YXW" id="tXK-x2-7CI"/>
                         <outlet property="twitterLogo" destination="Iit-MW-oPY" id="9dT-m7-bEM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-796" y="134"/>
+            <point key="canvasLocation" x="-796" y="133.5832083958021"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="ETD-Oc-sbS">
@@ -276,7 +277,6 @@
                                             <outlet property="retweetButton" destination="RUO-q6-1bh" id="oNB-R8-NF4"/>
                                             <outlet property="tweetTextView" destination="wQ8-eF-hxF" id="WJH-NV-LvV"/>
                                             <outlet property="usernameLabel" destination="Y6R-6X-r2m" id="Cfv-z9-32q"/>
-                                            <segue destination="Gtg-A0-FGd" kind="presentation" identifier="detailsSegue" id="rjm-hQ-QRV"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -447,7 +447,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="3Mh-zE-cEO">
-                        <barButtonItem key="leftBarButtonItem" title="&lt; Home" id="bm6-kF-N9H">
+                        <barButtonItem key="leftBarButtonItem" title="&lt; Timeline" id="bm6-kF-N9H">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="homeButton:" destination="DBf-Lo-eyk" id="hht-5c-PtB"/>
@@ -477,7 +477,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PHe-aK-oMf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3733.5999999999999" y="895.50224887556226"/>
+            <point key="canvasLocation" x="2866" y="842"/>
         </scene>
         <!--Compose Tweet View Controller-->
         <scene sceneID="h7x-Co-96h">
@@ -623,7 +623,7 @@
         <!--Navigation Controller-->
         <scene sceneID="C7N-et-ual">
             <objects>
-                <navigationController restorationIdentifier="detailsNavigation" automaticallyAdjustsScrollViewInsets="NO" id="Gtg-A0-FGd" sceneMemberID="viewController">
+                <navigationController restorationIdentifier="tweetDetailsNavigation" storyboardIdentifier="tweetDetailsNavigation" automaticallyAdjustsScrollViewInsets="NO" id="Gtg-A0-FGd" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="GpI-rY-BRR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -636,7 +636,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l6O-a0-O4L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2796" y="896"/>
+            <point key="canvasLocation" x="1929" y="842"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Bbw-ht-cTI">

@@ -7,9 +7,9 @@ Time spent: **X** hours spent in total
 The following **required** functionality is completed:
 
 - [ ] Hamburger menu
-   - [ ] Dragging anywhere in the view should reveal the menu.
+   - [x] Dragging anywhere in the view should reveal the menu.
    - [ ] The menu should include links to your profile, the home timeline, and the mentions view.
-   - [ ] The menu can look similar to the example or feel free to take liberty with the UI.
+   - [x] The menu can look similar to the example or feel free to take liberty with the UI.
 - [ ] Profile page
    - [ ] Contains the user header view
    - [ ] Contains a section with the users basic stats: # tweets, # following, # followers
@@ -31,6 +31,7 @@ The following **optional** features are implemented:
 The following **additional** features are implemented:
 
 - [x] Added hyperlinks to the the tweet links for urls
+- [x] Animated login page with a moving background, and an enlarged bird upon successful login
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
