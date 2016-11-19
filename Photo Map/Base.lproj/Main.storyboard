@@ -21,13 +21,33 @@
                     <view key="view" contentMode="scaleToFill" id="IER-PT-2nq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qSm-ii-gme">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="qSm-ii-gme" firstAttribute="leading" secondItem="IER-PT-2nq" secondAttribute="leading" id="Lfb-XM-2Cv"/>
+                            <constraint firstItem="N8d-FM-OAP" firstAttribute="top" secondItem="qSm-ii-gme" secondAttribute="bottom" id="iua-tm-OnU"/>
+                            <constraint firstItem="qSm-ii-gme" firstAttribute="top" secondItem="FF8-mr-LhG" secondAttribute="bottom" id="o6Z-cV-nbs"/>
+                            <constraint firstAttribute="trailing" secondItem="qSm-ii-gme" secondAttribute="trailing" id="qj7-Rx-AjL"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="HUo-VF-R6y"/>
+                    <navigationItem key="navigationItem" id="HUo-VF-R6y">
+                        <barButtonItem key="leftBarButtonItem" title="&lt; Back" id="aFb-L1-eEl">
+                            <connections>
+                                <action selector="backButtonPress:" destination="WeT-38-qba" id="Tk4-qg-8Sk"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="photoImageView" destination="qSm-ii-gme" id="dQb-m7-RU4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QRl-fe-rlf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="640.5" y="776.5"/>
+            <point key="canvasLocation" x="1227.5" y="776.5"/>
         </scene>
         <!--San Francisco-->
         <scene sceneID="tFw-bd-Fbr">
@@ -71,7 +91,7 @@
                     <connections>
                         <outlet property="cameraButton" destination="vLp-gy-wmu" id="Oa3-uJ-hnu"/>
                         <outlet property="mapView" destination="P0Y-h3-prX" id="viQ-dr-g2u"/>
-                        <segue destination="WeT-38-qba" kind="modal" id="Jll-Zo-2PI"/>
+                        <segue destination="zqO-nW-ZhV" kind="modal" identifier="fullImageSegue" id="Jll-Zo-2PI"/>
                         <segue destination="eZf-Nb-6PU" kind="push" identifier="tagSegue" id="PYx-NE-qDE"/>
                     </connections>
                 </viewController>
@@ -183,6 +203,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vxO-GI-GdX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="109" y="-3"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="STl-0G-9Tx">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zqO-nW-ZhV" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ca3-Bp-6lP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="WeT-38-qba" kind="relationship" relationship="rootViewController" id="3Lc-0U-rI1"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hR7-b1-IP5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="640.5" y="776.5"/>
         </scene>
     </scenes>
     <resources>

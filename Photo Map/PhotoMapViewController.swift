@@ -44,6 +44,10 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
         if segue.identifier == "tagSegue" {
             let vc = segue.destination as! LocationsViewController
             vc.delegate = self
+        } else if segue.identifier == "fullImageSegue" {
+            let navController = segue.destination as! UINavigationController
+            let vc = navController.topViewController as! FullImageViewController            
+            vc.photo = editedImage
         }
     }
     
@@ -63,6 +67,7 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
             annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseID)
             annotationView!.canShowCallout = true
             annotationView!.leftCalloutAccessoryView = UIImageView(frame: CGRect(x:0, y:0, width: 50, height:50))
+            annotationView!.rightCalloutAccessoryView = UIButton.init(type: UIButtonType.detailDisclosure)
         }
         
         let imageView = annotationView?.leftCalloutAccessoryView as! UIImageView
@@ -80,6 +85,10 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
         imageView.image = thumbnail
         
         return annotationView
+    }
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        self.performSegue(withIdentifier: "fullImageSegue", sender: nil)
     }
 
 }
