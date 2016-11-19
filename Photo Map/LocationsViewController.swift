@@ -30,6 +30,8 @@ class LocationsViewController: UIViewController, UITableViewDelegate, UITableVie
         tableView.dataSource = self
         tableView.delegate = self
         searchBar.delegate = self
+        
+        searchBar.becomeFirstResponder()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -91,7 +93,6 @@ class LocationsViewController: UIViewController, UITableViewDelegate, UITableVie
                             NSLog("response: \(responseDictionary)")
                             self.results = responseDictionary.value(forKeyPath: "response.venues") as! NSArray
                             self.tableView.reloadData()
-
                     }
                 }
         });

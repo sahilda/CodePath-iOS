@@ -29,7 +29,7 @@
             </objects>
             <point key="canvasLocation" x="640.5" y="776.5"/>
         </scene>
-        <!--Photo Map View Controller-->
+        <!--San Francisco-->
         <scene sceneID="tFw-bd-Fbr">
             <objects>
                 <viewController id="lFw-Rp-YqL" customClass="PhotoMapViewController" customModule="Photo_Map" customModuleProvider="target" sceneMemberID="viewController">
@@ -45,7 +45,12 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vLp-gy-wmu">
-                                <rect key="frame" x="155" y="473" width="64" height="64"/>
+                                <rect key="frame" x="137.5" y="467" width="100" height="100"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="tRI-9w-pty"/>
+                                    <constraint firstAttribute="width" constant="100" id="zAO-CH-eg8"/>
+                                </constraints>
                                 <state key="normal" image="camera"/>
                                 <connections>
                                     <action selector="onCameraPress:" destination="lFw-Rp-YqL" eventType="touchUpInside" id="fjo-Wg-XEc"/>
@@ -54,7 +59,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="FCW-dS-CHs" firstAttribute="top" secondItem="vLp-gy-wmu" secondAttribute="bottom" constant="130" id="D4I-8J-XAG"/>
+                            <constraint firstItem="FCW-dS-CHs" firstAttribute="top" secondItem="vLp-gy-wmu" secondAttribute="bottom" constant="100" id="D4I-8J-XAG"/>
                             <constraint firstAttribute="trailing" secondItem="P0Y-h3-prX" secondAttribute="trailing" id="GyS-DE-G4w"/>
                             <constraint firstItem="P0Y-h3-prX" firstAttribute="leading" secondItem="Mhb-YR-9VT" secondAttribute="leading" id="bug-Ma-71a"/>
                             <constraint firstItem="vLp-gy-wmu" firstAttribute="centerX" secondItem="Mhb-YR-9VT" secondAttribute="centerX" id="mv3-Sn-PPK"/>
@@ -62,8 +67,9 @@
                             <constraint firstItem="P0Y-h3-prX" firstAttribute="top" secondItem="EE8-5b-dLk" secondAttribute="bottom" id="rcp-CV-1QZ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Ami-6c-JSW"/>
+                    <navigationItem key="navigationItem" title="San Francisco" id="Ami-6c-JSW"/>
                     <connections>
+                        <outlet property="cameraButton" destination="vLp-gy-wmu" id="Oa3-uJ-hnu"/>
                         <outlet property="mapView" destination="P0Y-h3-prX" id="viQ-dr-g2u"/>
                         <segue destination="WeT-38-qba" kind="modal" id="Jll-Zo-2PI"/>
                         <segue destination="eZf-Nb-6PU" kind="push" identifier="tagSegue" id="PYx-NE-qDE"/>
@@ -71,7 +77,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o0X-cZ-UFG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="641" y="-5"/>
+            <point key="canvasLocation" x="640.5" y="-5.5"/>
         </scene>
         <!--Add Location-->
         <scene sceneID="iO8-f3-thv">
@@ -152,7 +158,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Add Location" id="cFw-mk-Xuq"/>
                     <connections>
-                        <outlet property="searchBar" destination="d2g-cJ-R4d" id="XdO-R1-Xx2"/>
+                        <outlet property="searchBar" destination="d2g-cJ-R4d" id="1qL-nU-C0P"/>
                         <outlet property="tableView" destination="BsJ-w6-1O2" id="MoG-dS-3DM"/>
                     </connections>
                 </viewController>
