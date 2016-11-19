@@ -1,4 +1,4 @@
-# ios_photo_map_lab
+# Photo Map Lab
 
 ![Image](http://i.imgur.com/WIwqNtn.gif)
 
