@@ -11,9 +11,9 @@
 		6F2C48361E3B18C000E181AD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2C48351E3B18C000E181AD /* ViewController.swift */; };
 		6F2C48391E3B18C000E181AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F2C48371E3B18C000E181AD /* Main.storyboard */; };
 		6F2C483B1E3B18C000E181AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F2C483A1E3B18C000E181AD /* Assets.xcassets */; };
-		6F2C483E1E3B18C000E181AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F2C483C1E3B18C000E181AD /* LaunchScreen.storyboard */; };
 		6F2C48461E3B210E00E181AD /* SnowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2C48451E3B210E00E181AD /* SnowViewController.swift */; };
 		6F2C48491E3B315100E181AD /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2C48481E3B315100E181AD /* HomeViewController.swift */; };
+		6FD15DD11E3F1BBC00D5341F /* SpaceShipsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD15DD01E3F1BBC00D5341F /* SpaceShipsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,10 +22,10 @@
 		6F2C48351E3B18C000E181AD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		6F2C48381E3B18C000E181AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6F2C483A1E3B18C000E181AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		6F2C483D1E3B18C000E181AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6F2C483F1E3B18C000E181AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6F2C48451E3B210E00E181AD /* SnowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnowViewController.swift; sourceTree = "<group>"; };
 		6F2C48481E3B315100E181AD /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		6FD15DD01E3F1BBC00D5341F /* SpaceShipsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpaceShipsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,8 +61,8 @@
 				6F2C48331E3B18C000E181AD /* AppDelegate.swift */,
 				6F2C48351E3B18C000E181AD /* ViewController.swift */,
 				6F2C48371E3B18C000E181AD /* Main.storyboard */,
+				6FD15DD01E3F1BBC00D5341F /* SpaceShipsViewController.swift */,
 				6F2C483A1E3B18C000E181AD /* Assets.xcassets */,
-				6F2C483C1E3B18C000E181AD /* LaunchScreen.storyboard */,
 				6F2C483F1E3B18C000E181AD /* Info.plist */,
 				6F2C48451E3B210E00E181AD /* SnowViewController.swift */,
 				6F2C48481E3B315100E181AD /* HomeViewController.swift */,
@@ -130,7 +130,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6F2C483E1E3B18C000E181AD /* LaunchScreen.storyboard in Resources */,
 				6F2C483B1E3B18C000E181AD /* Assets.xcassets in Resources */,
 				6F2C48391E3B18C000E181AD /* Main.storyboard in Resources */,
 			);
@@ -144,6 +143,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6F2C48361E3B18C000E181AD /* ViewController.swift in Sources */,
+				6FD15DD11E3F1BBC00D5341F /* SpaceShipsViewController.swift in Sources */,
 				6F2C48341E3B18C000E181AD /* AppDelegate.swift in Sources */,
 				6F2C48461E3B210E00E181AD /* SnowViewController.swift in Sources */,
 				6F2C48491E3B315100E181AD /* HomeViewController.swift in Sources */,
@@ -159,14 +159,6 @@
 				6F2C48381E3B18C000E181AD /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		6F2C483C1E3B18C000E181AD /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6F2C483D1E3B18C000E181AD /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -308,6 +300,7 @@
 				6F2C48441E3B18C000E181AD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

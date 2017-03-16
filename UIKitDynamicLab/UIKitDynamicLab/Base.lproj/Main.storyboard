@@ -33,12 +33,21 @@
                                     <action selector="onSnowParticleButton:" destination="fue-hT-6zJ" eventType="touchUpInside" id="PqW-EO-kIs"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="J6z-fk-igT">
+                                <rect key="frame" x="147" y="366" width="80" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Spaceships"/>
+                                <connections>
+                                    <action selector="onSpaceshipButton:" destination="fue-hT-6zJ" eventType="touchUpInside" id="pYF-QF-sLg"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="modal" identifier="block" id="sZr-A4-M63"/>
                         <segue destination="uNk-6h-vXE" kind="modal" identifier="snow" id="GKl-pc-8f6"/>
+                        <segue destination="aeg-zP-lY2" kind="modal" identifier="spaceship" id="Hbb-rc-2Gu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VUh-tP-1wp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -84,7 +93,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-49.5" y="154.5"/>
+            <point key="canvasLocation" x="-51" y="-263"/>
         </scene>
         <!--Snow View Controller-->
         <scene sceneID="9aW-60-wfD">
@@ -101,7 +110,26 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FLt-V1-JCX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-50" y="938"/>
+            <point key="canvasLocation" x="-51" y="488"/>
+        </scene>
+        <!--Space Ships View Controller-->
+        <scene sceneID="022-F6-h4C">
+            <objects>
+                <viewController id="aeg-zP-lY2" customClass="SpaceShipsViewController" customModule="UIKitDynamicLab" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8QS-eh-bWq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                    </view>
+                    <navigationItem key="navigationItem" id="tQk-mM-hmw"/>
+                    <connections>
+                        <outlet property="backgroundView" destination="8QS-eh-bWq" id="5kt-gl-s7y"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DV0-Ih-XMy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-52" y="1241"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

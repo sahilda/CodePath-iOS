@@ -42,7 +42,7 @@ class SnowViewController: UIViewController, UICollisionBehaviorDelegate {
     }
     
     func meltSnow(snowView: UIView) {
-        UIView.animate(withDuration: 0.2, animations: {() -> Void in
+        UIView.animate(withDuration: 0.1, animations: {() -> Void in
             snowView.alpha = 0}, completion: { (true) -> Void in
                 snowView.removeFromSuperview()})
     }

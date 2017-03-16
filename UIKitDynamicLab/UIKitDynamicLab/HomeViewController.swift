@@ -29,4 +29,8 @@ class HomeViewController: UIViewController {
         performSegue(withIdentifier: "snow", sender: nil)
     }
 
+    @IBAction func onSpaceshipButton(_ sender: Any) {
+        performSegue(withIdentifier: "spaceship", sender: nil)
+    }
+    
 }
