@@ -33,4 +33,7 @@ class HomeViewController: UIViewController {
         performSegue(withIdentifier: "spaceship", sender: nil)
     }
     
+    @IBAction func onFlappyBirdButton(_ sender: Any) {
+        performSegue(withIdentifier: "flappybird", sender: nil)
+    }
 }
