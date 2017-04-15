@@ -48,7 +48,7 @@
                                 <rect key="frame" x="137" y="454" width="96" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <state key="normal" title="Flappy Brid"/>
+                                <state key="normal" title="Flappy Bird"/>
                                 <connections>
                                     <action selector="onFlappyBirdButton:" destination="fue-hT-6zJ" eventType="touchUpInside" id="WHV-A8-L38"/>
                                 </connections>
