@@ -80,6 +80,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="ZBz-ry-ECe"/>
                     <connections>
                         <outlet property="nav_bar2" destination="eU8-pc-Mjq" id="Jb7-PU-bT5"/>
                         <outlet property="profile_image" destination="A1d-qL-rJF" id="OAV-HX-arT"/>

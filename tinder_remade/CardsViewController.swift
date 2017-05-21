@@ -8,10 +8,11 @@
 
 import UIKit
 
-class CardsViewController: UIViewController {
+class CardsViewController: UIViewController, UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning {
     
     @IBOutlet weak var draggableImageView: DraggableImageView!
     var imageViewCenterPoint: CGPoint!
+    var isPresenting: Bool = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,13 +70,54 @@ class CardsViewController: UIViewController {
         performSegue(withIdentifier: "profileModal", sender: self)
     }
     
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "profileModal" {
             let profileVC = segue.destination as! ProfileViewController
+            profileVC.modalPresentationStyle = UIModalPresentationStyle.custom
+            profileVC.transitioningDelegate = self
             profileVC.profileImage = draggableImageView!.image!
         }
     }
     
+    func animationControllerForPresentedController(presented: UIViewController!, presentingController presenting: UIViewController!, sourceController source: UIViewController!) -> UIViewControllerAnimatedTransitioning! {
+        isPresenting = true
+        return self
+    }
+    
+    func animationControllerForDismissedController(dismissed: UIViewController!) -> UIViewControllerAnimatedTransitioning! {
+        print("her4e")
+        isPresenting = false
+        return self
+    }
+    
+    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+        print("here")
+        return 0.4
+    }
+    
+   func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+        print("animating transition")
+        let containerView = transitionContext.containerView
+        let toViewController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to)!
+        let fromViewController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from)!
+        
+        if (isPresenting) {
+            containerView.addSubview(toViewController.view)
+            toViewController.view.alpha = 0
+            UIView.animate(withDuration: 0.4, animations: { () -> Void in
+                toViewController.view.alpha = 1
+            }) { (finished: Bool) -> Void in
+                transitionContext.completeTransition(true)
+            }
+        } else {
+            UIView.animate(withDuration: 0.4, animations: { () -> Void in
+                fromViewController.view.alpha = 0
+            }) { (finished: Bool) -> Void in
+                transitionContext.completeTransition(true)
+                fromViewController.view.removeFromSuperview()
+            }
+        }
+    } 
+
 }
 
