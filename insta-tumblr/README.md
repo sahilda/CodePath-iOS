@@ -1,10 +1,22 @@
-# Codepath iOS Work
+# InstaTumblr
 
-This is a repository of all project and work completed during class.
+An instagram view of the Humans of New York Tumblr feed.
+
+## Video Walkthrough
+
+Here's a walkthrough of implemented user stories:
+
+<img src='http://i.imgur.com/AMkoNyi.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+GIF created with [LiceCap](http://www.cockos.com/licecap/).
+
+## Notes
+
+* App logo was found on the [Humans of New York blog](http://www.majamade.com/hony/).
 
 ## License
 
-    Copyright 2017 Sahil Agarwal
+    Copyright 2016 Joshua Escribano and Sahil Agarwal
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
